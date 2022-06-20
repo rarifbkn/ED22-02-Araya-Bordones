@@ -14,8 +14,7 @@ public:
     void insert(string identidad);
     int cantPersonas();
     ~LinkedList();
-
-
+    
 };
 
 #endif

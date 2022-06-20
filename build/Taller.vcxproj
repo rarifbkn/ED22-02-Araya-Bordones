@@ -314,9 +314,9 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\main.cpp" />
+    <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\Detector.cpp" />
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\Person.cpp" />
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\NodePerson.cpp" />
-    <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\LinkedList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\build\ZERO_CHECK.vcxproj">

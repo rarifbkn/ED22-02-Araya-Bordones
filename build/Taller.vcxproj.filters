@@ -4,13 +4,13 @@
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\Detector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\Person.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\NodePerson.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="C:\Users\Usuario\Documents\GitHub\ES22-02-Araya-Bordones\src\logic\LinkedList.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

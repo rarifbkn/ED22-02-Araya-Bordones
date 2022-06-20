@@ -7,8 +7,8 @@
 
 **Alumnos:**
 
-* Alumno 01 (Rol)
-* Alumno 02 (Rol)
+* Arif Bordones. (Coordinador)
+* Scarlette Araya. (Encargada de bitácora)
 
 ## Resumen 
 
@@ -36,9 +36,9 @@ El fin que se desea llegar. (Comenzar con un verbo: "Construir un sistema...", "
 
 **Objetivos específicos**
 
-1. Objetivo 1 -Estructurar el problema y la creacion de las clases principales.
-2. Objetivo 2 -Desarrollo del codigo para reconocer a las personas.
-3. Objetivos 3 -Mejorar el codigo con la inclusion de arboles como estructura principal.
+1. -Estructurar el problema y la creacion de las clases principales.
+2. -Desarrollo del codigo para reconocer a las personas.
+3. -Mejorar el codigo con la inclusion de arboles como estructura principal.
 
 Los objetivos específicos son acciones específicas que son desarrolladas para lograr cumplir el objetivo general, por ejemplo:
 

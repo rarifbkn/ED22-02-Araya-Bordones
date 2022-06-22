@@ -3,12 +3,13 @@
 using namespace std;
 
 Person::Person(Rect& r){
+
     xInitials = r.x;
     yInitials = r.y;
     xFinal = r.x + r.width;
-    yFinal = r.y + r.width;
+    yFinal = r.y + r.height;
     centroX = r.x + ((float)r.width/2.0);
-    centroY = r.y + ((float)r.width/2.0);
+    centroY = r.y + ((float)r.height/2.0);
 }
 
 Mat Person::getImg(){

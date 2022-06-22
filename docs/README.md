@@ -26,13 +26,13 @@ Las comparaciones deben concretarse con hechos y datos, sin frases ambiguas o t�
 
 ### 1.1 Descripción del problema
 
-Dado el laboratorio describir como se entiende el problema bajo sus propias palabras.
+El desafio de este taller consiste en la creación de un programa que sea capaz de llevar la informacion que nos proporcionara la camara de seguridad de la empresa con esta informacion se requiere contabilizar la entrada y salida de las personas a la zona especifica.  
 
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-El fin que se desea llegar. (Comenzar con un verbo: "Construir un sistema...", "Desarrollar un sistema...", etc)
+Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer a las personas que transitan por principales entradas.
 
 **Objetivos específicos**
 
@@ -40,26 +40,23 @@ El fin que se desea llegar. (Comenzar con un verbo: "Construir un sistema...", "
 2. -Desarrollo del codigo para reconocer a las personas.
 3. -Mejorar el codigo con la inclusion de arboles como estructura principal.
 
-Los objetivos específicos son acciones específicas que son desarrolladas para lograr cumplir el objetivo general, por ejemplo:
-
-1. Investigar  el  estado  del  arte  de  visión  por  computador  y  audio  para  resolver  tareas de  clasificación unimodal y multimodal aplicado  al  problema  de  reconocimiento  de emociones.
-2.  Seleccionar  uno  o  dos  métodos  estudiados  en  el  estado  del  arte  para  la  estimación  de  laemoción utilizando datos unimodales o multimodales.
-3.  Implementar los métodos seleccionados utilizando el lenguaje de programación Python y laslibrerías suministradas por Pytorch.
-4.  Validar  los  resultados  por  medio  bases  de  datos  especializadas  para  el  desarrollo  deaplicaciones basadas en la estimación de la emoción y que incluyan varios modos de atributoscomo: imágenes, sonido y/o texto.
-5.  Proponer  mejoras  a  los  modelos  implementados  para  mejorar  su  desempeño  en  futurasimplementaciones o proyectos de investigación.
-6.  Difundir los resultados en medios científicos nacionales o internacionales.
-
 ### 1.3 Solución propuesta
 
-Esbozo de la solución propuesta, se espera que esta vaya evolucionando a medida que se avanza en el proyecto.
+Se trabajo con histogramas de gradientes, los cuales por medio de graficos de colores logran identificar las personas, esto a su vez con ayuda de la libreria OpenCV. 
 
 ## 2. Materiales y métodos
 
-Explicar brevemente como se espera desarrollar el trabajo de implementación.
+Para el desarrollo de este taller se requiere: 
+-video de seguridad
+-IDE visual studio code
+-Libreria OpenCV
 
 ### 2.1 Instalación
+Librerias
+-OpenCV
 
-Describir brevemente las librerías utilizadas para la instalación y programas utilizados para la ejecución del código. (Agregar una sección de anexo para describir como fueron instaladas las librerías de OpenCV y la IDE utilzada para el trabajo)
+IDES
+-Visual studio code
 
 ### 2.2 Diseño 
 

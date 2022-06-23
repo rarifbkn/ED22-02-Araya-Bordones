@@ -8,9 +8,9 @@ private:
 
 public:
     LinkedList();
-    LinkedList(NodePerson* first);
-    NodePerson* getFirst();
-    void setNodo(NodePerson* n);
+    LinkedList(NodePerson& first);
+    NodePerson& getFirst();
+    void setNodo(NodePerson& n);
     void insert(string identidad);
     int cantPersonas();
     ~LinkedList();

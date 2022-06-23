@@ -3,23 +3,24 @@
 LinkedList::LinkedList(){
 
 }
-LinkedList::LinkedList(NodePerson* first){
-    this->first = first;
+LinkedList::LinkedList(NodePerson& first){
+    this.first = first;
 }
 
-NodePerson* LinkedList::getFirst(){
-    return this->first;
+NodePerson& LinkedList::getFirst(){
+    return this.first;
 }
-void LinkedList::setNodo(NodePerson* n){
+void LinkedList::setNodo(NodePerson& n){
     this->first = n;
 }
 void LinkedList::insert(string identidad){ //last insert
-    Person* p  = new Person();
-    NodePerson* n = new NodePerson(p);
-    NodePerson* aux = first;
+    Person& p  = new Person();
+    p->setEntity(identidad);
+    NodePerson& n = new NodePerson(p);
+    NodePerson& aux = first;
     if(aux != nullptr){
-        while(aux->getNext()!= nullptr){ //recorre la lista hasta el ultimo
-        aux = aux->getNext();
+        while(aux.getNext()!= nullptr){ //recorre la lista hasta el ultimo
+         aux = aux.getNext();
     } // si el sgte es null se rompe
     aux->setNext(n);
     }    

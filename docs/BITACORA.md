@@ -10,3 +10,4 @@
 |14/JUN| OBJ-02| Comienzo de prubas con algoritmo HOG| Arif y Scarlette| 2 horas| 4 horas|
 |20/JUN| OBJ-02| Optimización del código detector| Arif y Scarlette| 3 horas| 3 horas|
 |21/JUN| OBJ-02| Comienzo de pruebas con la detección de personas en video| 4 horas| 4 horas|
+|22/JUN| OBJ-02| Desarrollo de deteccion de personas en secuencia de imagenes| 4 horas| 4 horas|

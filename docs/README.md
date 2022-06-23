@@ -11,22 +11,14 @@
 * Scarlette Araya. (Encargada de bitácora)
 
 ## Resumen 
-
-> Agregar un resumen que describa el trabajo realizado y sus resultados. (Entre 150 y 180 palabras)
-> Más cosas...
-> El resumen indicarlo como cita con el comando `>`
+>El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y listas enlazadas simples. 
 
 ## 1. Introducción
-
-La primera función de un reporte técnico es plasmar la información necesaria para que otras personas puedan reproducir el sistema propuesto o puedan entender su fucnionamiento . Para cumplir anterior se debe diferenciar claramente entre los artefactos de diseño e implementación. En el caso de un desarrollo tecnológico los algoritmos son importantes como componente de diseño y los programas generalmente son irrelevantes y deben resumidos o agregados en anexos en el documento. Los programas no son importantes en el documento, salvo si se quiere explicar conceptos expecíficos del lenguaje o del algoritmo implementado.
-
-La redacción debe ser formal y de modo impersonal. No se debe utlizar primera persona del singular o plural. Se debe evitar el uso de cualquier calificativo sustituyéndolo siempre utilizando datos concretos y rastreables en documentos o publicaciones a través de referencias bibliográficas. Por ejemplo, no calificar algo como: "muy importante", "sustancial", "muy usadoo" o "mucho mejor".
-
-Las comparaciones deben concretarse con hechos y datos, sin frases ambiguas o términos generales. Por ejemplo, nunca se debe redactar frases como "el método es mejor que el método B". Lo correcto es decir, el error promedio de el método A es de 5 %, correspondiendo a la mitad del error de 10% obtenido utilizando el método B". El tiempo verbal es usualmente presente. No se debe perder de vista que se está explicando ”como hacer algo”, en vez de ”qué se hizo”. Todo aspecto circunstancial es irrelevante para el documento. Por ejemplo, si se ha desarrollado en el laboratorio X, o en el curso Y, con el profesor Z, etc.
+La problemática propuesta consiste en crear un sistema de vigilancia para una empresa, la cual tiene como objetivo llevar la información de las personas que transitan en una una zona en específico. Para esto el equipo ideara un programa que registrara la entrada y salida de los clientes al recinto, el cual se llevara a cabo en visual studio code con c++, haciedo uso de libreria de visión artificial OpenCV.
 
 ### 1.1 Descripción del problema
 
-El desafio de este taller consiste en la creación de un programa que sea capaz de llevar la informacion que nos proporcionara la camara de seguridad de la empresa con esta informacion se requiere contabilizar la entrada y salida de las personas a la zona especifica.  
+El desafío de este taller consiste en la creación de un programa que sea capaz de llevar la información que nos proporcionara la camara de seguridad de la empresa con esta información se requiere contabilizar la entrada y salida de las personas a la zona específica.  
 
 ### 1.2 Objetivos 
 
@@ -59,16 +51,19 @@ IDES
 -Visual studio code
 
 ### 2.2 Diseño 
+El diseño utilizado en este taller fue la por default del Cmake, con el modulo de logic el cual contiene las clases cpp con sus propios métodos, el módulo include contiene los headers de las clases, las cules son:
+-Person
+-NodePerson
+-linkedList
+-Detector
 
-Explicar los componentes (módulos o clases) utilizados para resolver el problema. Indicar arquitectura propuesta, diagrama de clases u otro artefacto que estime conveniente para explicar el diseño de su implimentación.
-
-### 2.3 Implementación
+### 2.3 Implementación*********************************************************************
 
 Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
 
 Por ejemplo, 
 
-#### Detector de caras
+#### Detector de caras*****************************************************
 
 El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código para detectar una cara en una imagen se muestra a continuación:
 
@@ -88,9 +83,9 @@ El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código p
 ```
 La primera linea carga el archivo de entrenamiento... etc
 
-## 3. Resultados obtenidos
+## 3. Resultados obtenidos******************************************************************
 
-## 4. Conclusiones
+## 4. Conclusiones*********************************************************************************
 
 # Anexos
 

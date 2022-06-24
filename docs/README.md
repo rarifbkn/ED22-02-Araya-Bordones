@@ -3,7 +3,7 @@
 
 # Informe Técnico 
 ## Curso: Estructura de datos
-### Detección y reidentificación de caras en secuencias de imágenes o video
+### Detección y reidentificación de personas en secuencias de imágenes o video
 
 **Alumnos:**
 
@@ -11,43 +11,46 @@
 * Scarlette Araya. (Encargada de bitácora)
 
 ## Resumen 
-
-> Agregar un resumen que describa el trabajo realizado y sus resultados. (Entre 150 y 180 palabras)
-> Más cosas...
-> El resumen indicarlo como cita con el comando `>`
+>El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y listas enlazadas simples. 
 
 ## 1. Introducción
-
-La primera función de un reporte técnico es plasmar la información necesaria para que otras personas puedan reproducir el sistema propuesto o puedan entender su fucnionamiento . Para cumplir anterior se debe diferenciar claramente entre los artefactos de diseño e implementación. En el caso de un desarrollo tecnológico los algoritmos son importantes como componente de diseño y los programas generalmente son irrelevantes y deben resumidos o agregados en anexos en el documento. Los programas no son importantes en el documento, salvo si se quiere explicar conceptos expecíficos del lenguaje o del algoritmo implementado.
-
-La redacción debe ser formal y de modo impersonal. No se debe utlizar primera persona del singular o plural. Se debe evitar el uso de cualquier calificativo sustituyéndolo siempre utilizando datos concretos y rastreables en documentos o publicaciones a través de referencias bibliográficas. Por ejemplo, no calificar algo como: "muy importante", "sustancial", "muy usadoo" o "mucho mejor".
-
-Las comparaciones deben concretarse con hechos y datos, sin frases ambiguas o términos generales. Por ejemplo, nunca se debe redactar frases como "el método es mejor que el método B". Lo correcto es decir, el error promedio de el método A es de 5 %, correspondiendo a la mitad del error de 10% obtenido utilizando el método B". El tiempo verbal es usualmente presente. No se debe perder de vista que se está explicando ”como hacer algo”, en vez de ”qué se hizo”. Todo aspecto circunstancial es irrelevante para el documento. Por ejemplo, si se ha desarrollado en el laboratorio X, o en el curso Y, con el profesor Z, etc.
+La problemática propuesta consiste en crear un sistema de vigilancia para una empresa, la cual tiene como objetivo llevar la información de las personas que transitan en una una zona en específico. Para esto el equipo ideara un programa que registrara la entrada y salida de los clientes al recinto, el cual se llevara a cabo en visual studio code con c++, haciedo uso de libreria de visión artificial OpenCV.
 
 ### 1.1 Descripción del problema
 
-El desafio de este taller consiste en la creación de un programa que sea capaz de llevar la informacion que nos proporcionara la camara de seguridad de la empresa con esta informacion se requiere contabilizar la entrada y salida de las personas a la zona especifica.  
+El desafío de este taller consiste en la creación de un programa que sea capaz de llevar la información que nos proporcionara la camara de seguridad de la empresa, con esta información se requiere contabilizar la entrada y salida de las personas a la zona en específico.  
 
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer a las personas que transitan por principales entradas.
+Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer a las personas que transitan por las principales entradas.
 
 **Objetivos específicos**
 
-1. -Estructurar el problema y la creacion de las clases principales.
-2. -Desarrollo del codigo para reconocer a las personas.
-3. -Mejorar el codigo con la inclusion de arboles como estructura principal.
+1. -Estructurar el problema y la creación de las clases principales.
+2. -Desarrollo del código para reconocer a las personas.
+3. -Mejorar el codigo con la inclusión de árboles como estructura principal.
 
 ### 1.3 Solución propuesta
 
-Se trabajo con histogramas de gradientes, los cuales por medio de graficos de colores logran identificar las personas, esto a su vez con ayuda de la libreria OpenCV. 
+La solución propuesta consiste en la detección de las personas ubicando el centro de esta, que en conjunto de una linea referencial(mitad de la imagen) describira la entrada o salida de las personas que transitan en el video.
+
+*Desarrollo de la solución*
+
+->Detección de personas
+Implementar histogramas de gradientes orientados por medio del método HOGDescriptor, el cual por medio de diversos filtros de colores identifica el objeto que resalta dentro de la imagen.  
+
+->Información personas
+Por medio de lista enlazada se almacenara a las personas reconocidas por el detector.
+
+->Cálculo
+Luego de estructurar la información se calculará trafico, cantidad y velocidad de entrada y salida de personas.  
 
 ## 2. Materiales y métodos
 
 Para el desarrollo de este taller se requiere: 
--video de seguridad
+-Video de seguridad o secuencia de imágenes.
 -IDE visual studio code
 -Libreria OpenCV
 
@@ -59,34 +62,17 @@ IDES
 -Visual studio code
 
 ### 2.2 Diseño 
-
-Explicar los componentes (módulos o clases) utilizados para resolver el problema. Indicar arquitectura propuesta, diagrama de clases u otro artefacto que estime conveniente para explicar el diseño de su implimentación.
+El diseño utilizado en este taller fue la por default del Cmake, con el modulo de logic el cual contiene las clases cpp con sus propios métodos, el módulo include contiene los headers de las clases, las cules son:
+-Person
+-NodePerson
+-linkedList
+-Detector
+![DIAGRAMA DE CLASES](images/Diagrama_de_clases_EDD.png)
 
 ### 2.3 Implementación
 
 Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
 
-Por ejemplo, 
-
-#### Detector de caras
-
-El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código para detectar una cara en una imagen se muestra a continuación:
-
-```c++
- 1. faceCascadePath = "./haarcascade_frontalface_default.xml";
- 2. faceCascade.load( faceCascadePath )
- 3. std::vector<Rect> faces;
- 4. faceCascade.detectMultiScale(frameGray, faces);
-
- 5. for ( size_t i = 0; i < faces.size(); i++ )
- 6. {
- 7.  int x1 = faces[i].x;
- 8.  int y1 = faces[i].y;
- 9.  int x2 = faces[i].x + faces[i].width;
-10.  int y2 = faces[i].y + faces[i].height;
-11. }
-```
-La primera linea carga el archivo de entrenamiento... etc
 
 ## 3. Resultados obtenidos
 
@@ -100,9 +86,5 @@ La primera linea carga el archivo de entrenamiento... etc
 
 # Referecia
 
-Indicar los libros, páginas web, documentos, etc. Utilizados en el trabajo. Por ejemplo:
-
-1. MONTERO, J.,Metodos matemáticos aplicados a la ganadería.3aed. Sevilla: Ediciones de la pradera,2007.
-2. LVARADO,   J.   P.,¿Qué   debe   contener   un   artículo   científico?.http://www.ie.tec.ac.cr/palvarado/pmwiki/index.php/MSc/Art\%c3\%adculoCient\%c3\%adfico. Fe-cha de acceso:13/Nov/2018
 
 

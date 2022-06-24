@@ -3,18 +3,13 @@
 #include "NodePerson.h"
 
 class LinkedList{
-private:
-    NodePerson *first;
+    private:
+        NodePerson* first;
+    public:
+        LinkedList();
+        NodePerson* getFirst();
+        void insert(NodePerson* n);
+        bool isEmpty();
 
-public:
-    LinkedList();
-    LinkedList(NodePerson& first);
-    NodePerson& getFirst();
-    void setNodo(NodePerson& n);
-    void insert(string identidad);
-    int cantPersonas();
-    ~LinkedList();
-    
 };
-
 #endif

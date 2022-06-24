@@ -1,112 +1,88 @@
 #include <iostream>
-#include <opencv2/opencv.hpp>
-#include <opencv2/highgui.hpp>
+#include <stdlib.h>
+#include <opencv2\opencv.hpp>
+#include <opencv2\highgui.hpp>
 #include "logic/includes/Person.h"
-#include "logic/includes/Detector.h"
 #include "logic/includes/NodePerson.h"
 #include "logic/includes/LinkedList.h"
+#include <chrono>
 
 using namespace std;
 using namespace cv;
 
-//define functions
+//def functions
+void Reajust(Rect& box);
+ void calcularDistancia(LinkedList &list, int number);
 
-void menuGuardia();
-void menuAdministrador();
-void peopleDetect(Detector& detector, Mat img);
-LinkedList Personas;
-vector<Mat> imagenes;
 Mat img;
-VideoCapture video;
-string ruta = "";
-float puntoRef = 0;
+
 int main(int, char**) {
-    Detector detector;
-    string response ;
-    img = imread("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/imagen00");
+    //cronometro
+    auto start = chrono::system_clock::now();
+    auto end = chrono::system_clock::now();
+    chrono::duration<float,milli> duration= end - start; 
+    //cout<<duration.count() y mili es 1000 son 1 sec
+
+    HOGDescriptor hog;
+    hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
+
+   
+    string identidad ="ID";
+    LinkedList Personas;
+    Person p;
+    int number = 0;
+    int contEntrada = 0;
+    int contSalidas = 0;
+
+    img = imread("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/Prueba2.jpg");//lee la imagen
     if(!img.data){
         cout << "image not found "<<endl;
-        peopleDetect(detector,img);
     return -1;  
     }
-}  
-    /*
-    int numberImg = 0;
-    for(auto& imagen : imagenes){
-        ruta = "C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/imagen0",numberImg;
-        img = imread(ruta+".jpg"); 
-        if(!img.data){
-         cout << "image not found "<<endl;
-        return -1;     
-        }else{
-            cout<< "uwu\n";
-        }
-        peopleDetect(detector,img);
-        numberImg++;
-    }
-    **/
-    
-    
-    /*
-    cout <<"Ingrese su usuario (guardia/administrador): "<<endl;
-    cin>>response;
 
-    //compruebo que fue guardia/administrador
-    while(!response._Equal("guardia") && !response._Equal("administrador")){
-        cout <<"Ingrese un usuario valido por favor (guardia/administrador): "<<endl;
-        cin>>response;    
-    }
-   
-    if(response._Equal("guardia")){
-        menuGuardia();
-    }else{
-        menuAdministrador();
-    }
-    */
-
-void peopleDetect(Detector& detector, Mat frame){ 
+    int altoImg = img.cols+1; //mitad de la imagen
 
     vector<Rect> detections;
-    detector.getHog().detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
-   
-    // READJUST RECTANGLE TO IMAGE 
-    int contador = 0;
-    string entidad = "entidad0";
+    hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
+    //itero por cada deteccion que reconoce el hog
     for(auto& detection :detections){
-        Person p = detection;
-        entidad += contador;
-        Personas.insert(entidad);
-        
-        detection.x +=cvRound(detection.width*0.1);
-        detection.width =cvRound(detection.width*0.6);
-        detection.y +=cvRound(detection.height*0.06);
-        detection.height =cvRound(detection.height*0.8);
-
+        string aux = to_string(number);
+        p = detection;
+        p.setEntity(identidad+aux);
+       
         //draw rectangle about person and the center circle
-        rectangle(img,Point(p.getxInitials(),p.getyInitials()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
-        circle(img,Point(p.getCentroX(),p.getCentroY()),2,Scalar(0,255,0),2);
+        rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
+        circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
+
+        //creo el nodo y lo inserto en la lista
+        NodePerson nodito = NodePerson(p);
+        Personas.insert(&nodito);
+
+        //draw reference line
+        line(img,Point(altoImg/2,0),Point(altoImg/2,img.cols),Scalar(0,255,255),2);
         
-
-    /**
-    Mat matrix,imgWarp;
-    Point2f src[4] = {};
-    matrix = getPerspectiveTransform(detection.x,detection.y);
-    warpPerspective(img,imgWarp,matrix,Point(detection.width,detection.height));
-    */
+        number++; 
     }
-    cout << Personas.cantPersonas()<<endl;
-    //detector.DetectP(img);
-    namedWindow("Picture");
-    imshow("Picture", img);
+    //x cada persona calcule la distancia euclidiana respecto de los otros centroides para asi saber si se movio o es otra persona 
+    //calcularDistancia(Personas,number);
+    namedWindow("Imagen");
+    imshow("Imagen", img);
     waitKey(0);
+    destroyAllWindows();
+}  
+
+void Reajust(Rect& box){
+     //Reajusta el rectangulo
+        box.x += cvRound(box.width*0.1);
+        box.width = cvRound(box.width*0.8);
+        box.y += cvRound(box.height*0.06);
+        box.height = cvRound(box.height*0.8);
+}
+void calcularDistancia(LinkedList &list,int number){
+    //asumo que la lista no es 0
+    double distancia =0.0;
+    NodePerson *aux = list.getFirst();
+    
 
 }
-
-void menuGuardia(){
-    cout<<"Bienvenido al menu Guardia D:\n";
-}
-void menuAdministrador(){
-    cout<<"Bienvenido al menu administrador :D\n";
-}
-
 

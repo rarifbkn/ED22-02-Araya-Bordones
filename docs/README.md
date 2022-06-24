@@ -3,7 +3,7 @@
 
 # Informe Técnico 
 ## Curso: Estructura de datos
-### Detección y reidentificación de caras en secuencias de imágenes o video
+### Detección y reidentificación de personas en secuencias de imágenes o video
 
 **Alumnos:**
 
@@ -18,28 +18,39 @@ La problemática propuesta consiste en crear un sistema de vigilancia para una e
 
 ### 1.1 Descripción del problema
 
-El desafío de este taller consiste en la creación de un programa que sea capaz de llevar la información que nos proporcionara la camara de seguridad de la empresa con esta información se requiere contabilizar la entrada y salida de las personas a la zona específica.  
+El desafío de este taller consiste en la creación de un programa que sea capaz de llevar la información que nos proporcionara la camara de seguridad de la empresa, con esta información se requiere contabilizar la entrada y salida de las personas a la zona en específico.  
 
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer a las personas que transitan por principales entradas.
+Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer a las personas que transitan por las principales entradas.
 
 **Objetivos específicos**
 
-1. -Estructurar el problema y la creacion de las clases principales.
-2. -Desarrollo del codigo para reconocer a las personas.
-3. -Mejorar el codigo con la inclusion de arboles como estructura principal.
+1. -Estructurar el problema y la creación de las clases principales.
+2. -Desarrollo del código para reconocer a las personas.
+3. -Mejorar el codigo con la inclusión de árboles como estructura principal.
 
 ### 1.3 Solución propuesta
 
-Se trabajo con histogramas de gradientes, los cuales por medio de graficos de colores logran identificar las personas, esto a su vez con ayuda de la libreria OpenCV. 
+La solución propuesta consiste en la detección de las personas ubicando el centro de esta, que en conjunto de una linea referencial(mitad de la imagen) describira la entrada o salida de las personas que transitan en el video.
+
+*Desarrollo de la solución*
+
+->Detección de personas
+Implementar histogramas de gradientes orientados por medio del método HOGDescriptor, el cual por medio de diversos filtros de colores identifica el objeto que resalta dentro de la imagen.  
+
+->Información personas
+Por medio de lista enlazada se almacenara a las personas reconocidas por el detector.
+
+->Cálculo
+Luego de estructurar la información se calculará trafico, cantidad y velocidad de entrada y salida de personas.  
 
 ## 2. Materiales y métodos
 
 Para el desarrollo de este taller se requiere: 
--video de seguridad
+-Video de seguridad o secuencia de imágenes.
 -IDE visual studio code
 -Libreria OpenCV
 
@@ -56,36 +67,16 @@ El diseño utilizado en este taller fue la por default del Cmake, con el modulo 
 -NodePerson
 -linkedList
 -Detector
+![DIAGRAMA DE CLASES](images/Diagrama_de_clases_EDD.png)
 
-### 2.3 Implementación*********************************************************************
+### 2.3 Implementación
 
 Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
 
-Por ejemplo, 
 
-#### Detector de caras*****************************************************
+## 3. Resultados obtenidos
 
-El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código para detectar una cara en una imagen se muestra a continuación:
-
-```c++
- 1. faceCascadePath = "./haarcascade_frontalface_default.xml";
- 2. faceCascade.load( faceCascadePath )
- 3. std::vector<Rect> faces;
- 4. faceCascade.detectMultiScale(frameGray, faces);
-
- 5. for ( size_t i = 0; i < faces.size(); i++ )
- 6. {
- 7.  int x1 = faces[i].x;
- 8.  int y1 = faces[i].y;
- 9.  int x2 = faces[i].x + faces[i].width;
-10.  int y2 = faces[i].y + faces[i].height;
-11. }
-```
-La primera linea carga el archivo de entrenamiento... etc
-
-## 3. Resultados obtenidos******************************************************************
-
-## 4. Conclusiones*********************************************************************************
+## 4. Conclusiones
 
 # Anexos
 
@@ -95,9 +86,5 @@ La primera linea carga el archivo de entrenamiento... etc
 
 # Referecia
 
-Indicar los libros, páginas web, documentos, etc. Utilizados en el trabajo. Por ejemplo:
-
-1. MONTERO, J.,Metodos matemáticos aplicados a la ganadería.3aed. Sevilla: Ediciones de la pradera,2007.
-2. LVARADO,   J.   P.,¿Qué   debe   contener   un   artículo   científico?.http://www.ie.tec.ac.cr/palvarado/pmwiki/index.php/MSc/Art\%c3\%adculoCient\%c3\%adfico. Fe-cha de acceso:13/Nov/2018
 
 

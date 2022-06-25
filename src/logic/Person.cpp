@@ -2,39 +2,37 @@
 
 using namespace std;
 
+Person::Person(){
+
+}
+
 Person::Person(Rect& r){
 
-    xInitials = r.x;
-    yInitials = r.y;
+    xInitial = r.x;
+    yInitial = r.y;
     xFinal = r.x + r.width;
     yFinal = r.y + r.height;
-    centroX = r.x + ((float)r.width/2.0);
-    centroY = r.y + ((float)r.height/2.0);
+    xCentro = r.x + ((float)r.width/2.0);
+    yCentro = r.y + ((float)r.height/2.0);
 }
 
 Mat Person::getImg(){
     return this->img;
 }
-int Person::getEntries(){
-    return this->contEntries;
-}
 string Person::getEntity(){
     return this->entity;
 }
-int Person::getExit(){
-    return this->contExit;
+int Person::getxInitial(){
+    return this->xInitial;
 }
-int Person::getxInitials(){
-    return this->xInitials;
+int Person::getyInitial(){
+    return this->yInitial;
 }
-int Person::getyInitials(){
-    return this->yInitials;
+int Person::getxCentro(){
+    return this->xCentro;
 }
-int Person::getCentroX(){
-    return this->centroX;
-}
-int Person::getCentroY(){
-    return this->centroY;
+int Person::getyCentro(){
+    return this->yCentro;
 }
 int Person::getxFinal(){
     return this->xFinal;
@@ -43,40 +41,29 @@ int Person::getyFinal(){
     return this->yFinal;
 }
 
-void Person::setImg(Mat img){
-    this->img = img;
+void Person::setImg(Mat newImage){
+    this->img = newImage;
 }
 void Person ::setEntity(string entity){
     this->entity= entity;
 
 }
-void Person::setEntries(int contE){
-    this->contEntries = contE;
+void Person::setxInitial(int x){
+    this->xInitial = x;
 }
-
-void Person::setExit(int contE){
-    this->contExit = contE;
-}
-void Person::setxInitials(int x){
-    this->xInitials = x;
-}
-void Person::setyInitials(int y){
-    this->yInitials = y;
+void Person::setyInitial(int y){
+    this->yInitial = y;
 
 }
-void Person::setCentroX(int x){
-    this->centroX = x;
+void Person::setxCentro(int x){
+    this->xCentro = x;
 }
-void Person::setCentroY(int y){
-    this->centroY;
+void Person::setyCentro(int y){
+    this->yCentro;
 }
 void Person::setxFinal(int x){
     this->xFinal = x;
 }
 void Person::setyFinal(int y){
     this->yFinal = y;
-}
-
-Person :: ~Person(){
-
 }

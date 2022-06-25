@@ -10,44 +10,37 @@ class Person{
 private:
     Mat img;
     string entity;
-    int contEntries; 
-    int contExit;
-    int xInitials;
-    int yInitials;
-    int centroX;
-    int centroY;
+    int xInitial;
+    int yInitial;
     int xFinal;
     int yFinal;
-
+    int xCentro;
+    int yCentro;
 
 public:
+    Person();
     Person(Rect& r);
-
     Mat getImg();
     string getEntity();
     int getEntries();
     int getExit();
-    int getxInitials();
-    int getyInitials();
-    int getCentroX();
-    int getCentroY();
+    int getxInitial();
+    int getyInitial();
     int getyFinal();
     int getxFinal();
+    int getxCentro();
+    int getyCentro();
+   
       
-    void setImg(Mat img);
-    void setEntity(string entity);
-    void setEntries(int contE);
-    void setExit(int contE);
-    void setxInitials(int x);
-    void setyInitials(int y);
-    void setCentroX(int x);
-    void setCentroY(int y);
+    void setImg(Mat newImg);
+    void setEntity(string newEntity);
+    void setxInitial(int x);
+    void setyInitial(int y);
     void setxFinal(int x);
     void setyFinal(int y);
-    ~Person();
-
-
-
+    void setxCentro(int x);
+    void setyCentro(int y);
+    
 };
 
 #endif

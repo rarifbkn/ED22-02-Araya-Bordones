@@ -12,4 +12,5 @@
 |21/JUN| OBJ-02| Comienzo de pruebas con la detección de personas en video| Arif y Scarlette| 4 horas| 4 horas|
 |22/JUN| OBJ-02| Desarrollo de deteccion de personas en secuencia de imagenes| Arif y Scarlette| 4 horas| 4 horas|
 |23/JUN| OBJ-02| Finalizacion de informe| Arif y Scarlette| 2 horas| 2 horas| 
-|24/JUN| OBJ-02| Finalizar con la primera entrega| Arif y Scarlette| 2 horas| 2 horas|
+|24/JUN| OBJ-02| Finalizar con la primera entrega| Arif y Scarlette| 5 horas| 5 horas|
+

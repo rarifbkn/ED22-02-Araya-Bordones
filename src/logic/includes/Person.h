@@ -41,7 +41,6 @@ public:
     void setxCentro(int x);
     void setyCentro(int y);
     
-    ~Person();
 };
 
 #endif

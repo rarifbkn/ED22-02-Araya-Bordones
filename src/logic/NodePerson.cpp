@@ -17,6 +17,3 @@ NodePerson* NodePerson::getNext(){
 void NodePerson::setNext(NodePerson *n){
     this->next = n;
 }
-NodePerson::~NodePerson(){
-
-}

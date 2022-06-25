@@ -67,7 +67,3 @@ void Person::setxFinal(int x){
 void Person::setyFinal(int y){
     this->yFinal = y;
 }
-
-Person :: ~Person(){
-
-}

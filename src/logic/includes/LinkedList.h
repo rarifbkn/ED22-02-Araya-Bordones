@@ -9,7 +9,8 @@ class LinkedList{
         LinkedList();
         NodePerson* getFirst();
         void insert(NodePerson* n);
+        Person getPersonI(int i);
         bool isEmpty();
-
+        ~LinkedList();
 };
 #endif

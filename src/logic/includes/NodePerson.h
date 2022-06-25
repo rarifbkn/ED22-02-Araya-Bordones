@@ -12,7 +12,5 @@ public:
     void setPerson(Person p);
     NodePerson* getNext();
     void setNext(NodePerson *n);
-
-    ~NodePerson();
 };
 #endif

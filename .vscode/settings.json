@@ -17,6 +17,7 @@
         "charconv": "cpp",
         "utility": "cpp",
         "xiosbase": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "cmath": "cpp"
     }
 }

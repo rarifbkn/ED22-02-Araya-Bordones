@@ -78,14 +78,65 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
 
 ### 2.3 Implementación
 
-Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
+    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos Lista Enlazada simple
+    
+    -> el histograma de gradientes orientados por medio del codigo:
 
+    >// crea el detector para luego guardarlo en un vector
+    > HOGDescriptor hog;
+    > hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
+    > vector<Rect> detections;  
+
+    ->La deteccion de personas se hace una vez creado el detector, por medio de un iterador
+    >hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
+    >   //itero por cada deteccion que reconoce el hog   
+    >   for(auto& detection :detections){
+    >      //ajusta el rectangulo de la imagen
+    >        AdjustBox(detection);
+    >        p = detection;
+    >        //crea la identidad de la persona
+    >       string aux = to_string(numberPerson);
+    >        p = detection;
+    >        p.setEntity(identidad + aux);
+    >        //creo el nodo y lo inserto en la lista
+    >        NodePerson nodo = NodePerson(p);
+    >        Personas.insert(&nodo);
+    >       //Dibuja las figuras en la imagen
+    >
+    >        putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
+    >        rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
+    >        circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
+    >        numberPerson++; 
+    >    } 
+
+    ->La Lista Enlazada Simple:
+    >//Lista Enlazada creada en el main
+    > LinkedList Personas;
+
+    ->La lectura de la secuencia de imágenes
+    >//iterador
+    >vector<string> paths;
+    >paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen01.png");
+    >paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen02.png");
+    >paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen03.png");
+    >for(auto& path:paths){
+    >    //LECTURA IMAGEN
+    >    Mat img = imread(path);
+    >   // por si no encuentra la imagen
+    >   if(!img.data) return -1;}
+
+    ->Seguimiento de deteccion:
+    Por temas de tiempo y diversas dificultades explicadas dentro del informe en un anexo , no se logro realizar la diferenciacion de las personas entre las imagenes, es por esta razón que no se pudo continuar las historias 2,3,4,5,6,7 ya que era necesaria la diferenciacion entre estas para lograr el requirimiento
+
+    Sin embargo la lógica a implementar, fue que por cada imagen que pasara hiciera una lista de centroides nuevos para comparar por cada persona iterando en el vector de centroides, para asi obtener las personas que tienen una menor distancias entre los centroides de la persona y el centroide nuevo identificado y que por ende corresponden a la misma identidad, ó a los centroides que no se relacionan en distancia con ninguna persona anterior y que en conclusión serían personas nuevas. 
 
 ## 3. Resultados obtenidos
 
+    Por cada imagen leida en el programa se obtuvo la detección de personas correspondientes de forma correcta e identificada por una identidad, sin embargo dependiendo de la calidad de la imagen en cuanto a luz o colores puede variar el margen de error de detección, asi como con muchas personas juntas , puesto que confunden al área de detección del programa.
+
 ## 4. Conclusiones
 
-Tas estas 3 semanas de trabajo y todo lo mencionado anteriormente, se logró el 85% de las historias requeridas para esta primera entrega, aun así el objetivo principal de reconocer a las personas  por video se logró en su totalidad, con un buen uso de la libreria openCV y desempeño de parte de los programadores.
+Tras estas 3 semanas de trabajo y todo lo mencionado anteriormente, se logró el 60% de las historias requeridas para esta primera entrega, aun así el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad, con un buen uso de la libreria openCV y desempeño de parte de los programadores.
 El nuevo desafío consistira en implementar árboles binarios(AVL, HEAP) para la identificación de personas. 
 
 # Anexos
@@ -99,16 +150,32 @@ https://opencv.org/releases/
 https://visualstudio.microsoft.com/es/downloads/
 https://cmake.org/download/
 
+## Anexo C: Dificultades y problemáticas durante el desarrollo del taller 
+
+Durante el desarrollo se lograron muchos avances, pero en conjunto de diversos problemas se dificultó el trabajar en la IDE visual Studio code puesto que requeria de muchas herramientas externas para trabajar con el lenguaje c++, a pesar de tener mucha ayuda por parte del profesor y ayudante del ramo Estructura de Datos, no fue suficiente para aclarar todas las dudas que fueron surgiendo, por último el correr en el programa un video hacia que los recursos del pc llegaran a niveles altos de consumo que realentizaban el proceso y no se logro dibujar sobre el video los rectangulos de detección por falta de conocimiento.
+
 # Referecia
 
 ##Videos:
 
-https://www.youtube.com/watch?v=cvGEWBO0Vho
-https://www.youtube.com/watch?v=mwfHopNiA3I
-https://www.youtube.com/watch?v=VIg_xQ5ud8s
-https://www.youtube.com/watch?v=BCJYorKIlN8
+Los videos se usaron como referencia para la realizacion del proyecto.
+
+- tochiVision (2019, mayo 14). [OpenCV/C++ tutorial] people detection using Histogram of Oriented Gradients (HOG). Youtube. https://www.youtube.com/watch?v=cvGEWBO0Vho
+
+-CasualGamer (2020, noviembre 15). Capture Window with OpenCV in C++. Youtube. https://www.youtube.com/watch?v=mwfHopNiA3I
+
+
+- tochiVision (2018, julio 1). [OpenCV/C++ tutorial] Read, Display and write video. Youtube. https://www.youtube.com/watch?v=VIg_xQ5ud8s
+
+- tochiVision (2019b, junio 1). [OpenCV/C++ tutorial] combined people detection and tracking. Youtube. https://www.youtube.com/watch?v=BCJYorKIlN8
+
 
  ##Páginas
-https://opencv.org/ formato apa
+Se busco información en OpenCV Library. (2021, febrero 9). Home. OpenCV. https://opencv.org/
+
+Se busco y resolvieron dudas de errores desde corob-msft. (s/f). Compiler error C2512. Microsoft.Com. Recuperado el 25 de junio de 2022, de https://docs.microsoft.com/en-us/cpp/error-messages/compiler-errors-2/compiler-error-c2512?view=msvc-170
+
+
+ 
 
 

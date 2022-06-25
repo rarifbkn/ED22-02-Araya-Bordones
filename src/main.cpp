@@ -66,11 +66,21 @@ int main(int, char**) {
             //ajusta la caja
             AdjustBox(detection);
 
+            //crea la identidad de la persona
+            string aux = to_string(numberPerson);
             p = detection;
-            NuevosCentroides.push_back(p);
+            p.setEntity(identidad + aux);
+            //creo el nodo y lo inserto en la lista
+            NodePerson nodo = NodePerson(p);
+            Personas.insert(&nodo);
+
+            putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
+            rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
+            circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
+            //NuevosCentroides.push_back(p);
             numberPerson++; 
         }
-        calcularDistancia(Personas,NuevosCentroides,numberPerson);
+        //calcularDistancia(Personas,NuevosCentroides,numberPerson);
         namedWindow("Image");
         imshow("Image",img);
         waitKey(0);

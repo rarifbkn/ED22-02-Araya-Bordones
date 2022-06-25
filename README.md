@@ -24,7 +24,7 @@ usuario usando programación orientada a objetos en C++.
 - Se creó un branch del código y
 dejó un tag con el nombre: ”release 0.1”.
 
-    ![image](images/imagenInforme.png)
+    ![image](docs/images/imagenInforme.png)
     
 ### Documentos
 

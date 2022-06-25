@@ -171,6 +171,7 @@ Los videos se usaron como referencia para la realizacion del proyecto.
 
 
  ##Páginas
+ 
 Se busco información en OpenCV Library. (2021, febrero 9). Home. OpenCV. https://opencv.org/
 
 Se busco y resolvieron dudas de errores desde corob-msft. (s/f). Compiler error C2512. Microsoft.Com. Recuperado el 25 de junio de 2022, de https://docs.microsoft.com/en-us/cpp/error-messages/compiler-errors-2/compiler-error-c2512?view=msvc-170

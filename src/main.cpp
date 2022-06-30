@@ -12,7 +12,7 @@ using namespace cv;
 
 //def functions
 void AdjustBox(Rect& box);
-void calcularDistancia(LinkedList &list, vector<Person> NuevosCentroides,int numberPerson);
+float calcularDistancia(Person p1, Person p2);
 
 int main(int, char**) {
     //cronometro
@@ -27,7 +27,8 @@ int main(int, char**) {
     string identidad ="ID";
     vector<Mat> imagenes ;
     LinkedList Personas;
-    vector<Person> NuevosCentroides;
+    list<Person> nuevasPersonas;
+    list<float> distancias;
     Person p;
     int numberPerson = 0;
     int contEntrada = 0;
@@ -37,10 +38,9 @@ int main(int, char**) {
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen01.png");
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen02.png");
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen03.png");
-    
     for(auto& path:paths){
         //limpiamos el vectoor
-        NuevosCentroides.clear();
+        nuevasPersonas.clear();
         //LECTURA IMAGEN
         Mat img = imread(path);
 
@@ -63,22 +63,46 @@ int main(int, char**) {
         //itero por cada deteccion que reconoce el hog
         
         for(auto& detection :detections){
-            //ajusta la caja
-            AdjustBox(detection);
-
-            //crea la identidad de la persona
-            string aux = to_string(numberPerson);
             p = detection;
-            p.setEntity(identidad + aux);
-            //creo el nodo y lo inserto en la lista
-            NodePerson nodo = NodePerson(p);
-            Personas.insert(&nodo);
-
-            putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
-            rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
-            circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
-            //NuevosCentroides.push_back(p);
-            numberPerson++; 
+            nuevasPersonas.push_back(p);
+        }
+        //esto es nuevo
+        for(int i=0; i<numberPerson;i++){
+            Person p1 = Personas.getPersonI(i);
+            distancias.clear();
+            for(auto &personaNueva : nuevasPersonas){
+                Person p2 = personaNueva;
+                float distancia = calcularDistancia(p1,p2);
+                distancias.push_back(distancia);
+            }
+            distancias.sort();
+            float distMenor = distancias.front();
+            for(auto &personaNueva : nuevasPersonas){
+                Person p2 = personaNueva;
+                float distancia = calcularDistancia(p1,p2);
+                if(distancia == distMenor){
+                    p1.setRectangulo(p2.getRectangulo());
+                    nuevasPersonas.remove(p2);
+                }
+            }
+        }
+        //inserto a los centroides solitarios
+        for(auto &personaNueva : nuevasPersonas){
+                Person p2 = personaNueva;
+                NodePerson nodito = NodePerson(p2);
+                Personas.insert(&nodito);
+        }
+        for(auto& detection :detections){
+        //ajusta la caja
+        AdjustBox(detection);
+        //crea la identidad de la persona
+        string aux = to_string(numberPerson);
+        p = detection;
+        p.setEntity(identidad + aux);
+        putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
+        rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
+        circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
+        numberPerson++; 
         }
         //calcularDistancia(Personas,NuevosCentroides,numberPerson);
         namedWindow("Image");
@@ -98,27 +122,9 @@ void AdjustBox(Rect& box){
         box.height = cvRound(box.height*0.8);
 }
     
-void calcularDistancia(LinkedList &list, vector<Person> nuevosCentroides,int numberPerson){
-    float distanciaC = 0;
-    vector<float> distancias;
-    for(int i=0; i<numberPerson;i++){
-        distancias.clear();
-        Person p1 = list.getPersonI(i); //* Tengo la persona
-        for(auto& centroideP : nuevosCentroides){
-            Person p2 = centroideP;
-            int xCentro2 = p2.getxCentro();
-            int yCentro2 = p2.getyCentro();
-            distanciaC = sqrt(exp2(xCentro2-p1.getxCentro())+exp2(yCentro2-p1.getyCentro()));
-            distancias.push_back(distanciaC);
-        }
-        for(auto& distancia:distancias){
-            int Dmenor =9999999999999999;
-            if(distancia < Dmenor){
-                Dmenor = distancia;
-            }
-        }
-        
-    }    
-
+float calcularDistancia(Person p1, Person p2){
+    float distancia = sqrtf(exp2(p2.getxCentro()-p1.getxCentro())+ exp2(p2.getyCentro()-p1.getyCentro()));
+    return distancia;
 }
+
 

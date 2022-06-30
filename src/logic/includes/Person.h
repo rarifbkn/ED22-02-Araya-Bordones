@@ -10,6 +10,7 @@ class Person{
 private:
     Mat img;
     string entity;
+    Rect rectangulo;
     int xInitial;
     int yInitial;
     int xFinal;
@@ -30,6 +31,7 @@ public:
     int getxFinal();
     int getxCentro();
     int getyCentro();
+    Rect getRectangulo();
    
       
     void setImg(Mat newImg);
@@ -40,6 +42,7 @@ public:
     void setyFinal(int y);
     void setxCentro(int x);
     void setyCentro(int y);
+    void setRectangulo(Rect r);
     
 };
 

@@ -18,6 +18,8 @@
         "utility": "cpp",
         "xiosbase": "cpp",
         "string": "cpp",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "ratio": "cpp",
+        "xstddef": "cpp"
     }
 }

@@ -1,16 +1,17 @@
-#include "Person.h"
-#ifndef NODEPERSON_H
+
+#ifndef NODEAXIS_H
 #define NODEPERSON_H
+#include "Person.h"
 
 class NodePerson{
 private:
-    Person person;
-    NodePerson *next;
+    Person persona;
+    NodePerson *HIzq;
+    NodePerson *HDer;
 public:
     NodePerson(Person p);
     Person getPerson();
-    void setPerson(Person p);
-    NodePerson* getNext();
-    void setNext(NodePerson *n);
+    NodePerson* getHDer();
+    NodePerson* getHIzq();
 };
 #endif

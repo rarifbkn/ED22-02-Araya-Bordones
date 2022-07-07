@@ -1,19 +1,18 @@
 #include "includes/NodePerson.h"
 
 NodePerson ::NodePerson(Person p){
-    this->person = p;
-    this->next = nullptr;
+    this->persona = p;
+    this->HIzq = nullptr;
+    this->HDer = nullptr;
 }
     
 Person NodePerson::getPerson(){
-    return this->person;
+    return this->persona;
 }
-void NodePerson::setPerson(Person p){
-    this->person = p;
+NodePerson* NodePerson::getHIzq(){
+    return this->HIzq;
 }
-NodePerson* NodePerson::getNext(){
-    return this->next;
+NodePerson* NodePerson::getHDer(){
+    return this->HDer;
 }
-void NodePerson::setNext(NodePerson *n){
-    this->next = n;
-}
+

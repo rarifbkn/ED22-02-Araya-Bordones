@@ -1,10 +1,9 @@
 #include <iostream>
 #include <stdlib.h>
-#include <opencv2\opencv.hpp>
-#include <opencv2\highgui.hpp>
+#include <opencv2/opencv.hpp>
+#include <opencv2/highgui.hpp>
 #include "logic/includes/Person.h"
 #include "logic/includes/NodePerson.h"
-#include "logic/includes/LinkedList.h"
 #include <chrono>
 
 using namespace std;
@@ -21,14 +20,13 @@ int main(int, char**) {
     chrono::duration<float,milli> duration= end - start; 
     //cout<<duration.count() y mili es 1000 son 1 sec
 
+    //*histograma de gradientes
     HOGDescriptor hog;
     hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
 
     string identidad ="ID";
     vector<Mat> imagenes ;
-    LinkedList Personas;
     list<Person> nuevasPersonas;
-    list<float> distancias;
     Person p;
     int numberPerson = 0;
     int contEntrada = 0;
@@ -64,8 +62,10 @@ int main(int, char**) {
         
         for(auto& detection :detections){
             p = detection;
-            nuevasPersonas.push_back(p);
+            
+
         }
+
         //esto es nuevo
         for(int i=0; i<numberPerson;i++){
             Person p1 = Personas.getPersonI(i);
@@ -110,8 +110,6 @@ int main(int, char**) {
         waitKey(0);
         destroyAllWindows();
     }
-
-    Personas.~LinkedList();
 }  
 
 void AdjustBox(Rect& box){
@@ -123,7 +121,7 @@ void AdjustBox(Rect& box){
 }
     
 float calcularDistancia(Person p1, Person p2){
-    float distancia = sqrtf(exp2(p2.getxCentro()-p1.getxCentro())+ exp2(p2.getyCentro()-p1.getyCentro()));
+    float distancia = 0;
     return distancia;
 }
 

@@ -2,10 +2,10 @@
 	"artifacts" : 
 	[
 		{
-			"path" : "Debug/Taller.exe"
+			"path" : "MinSizeRel/Taller.exe"
 		},
 		{
-			"path" : "Debug/Taller.pdb"
+			"path" : "MinSizeRel/Taller.pdb"
 		}
 	],
 	"backtrace" : 1,
@@ -58,7 +58,7 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1"
+					"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG"
 				}
 			],
 			"includes" : 
@@ -95,91 +95,91 @@
 		"commandFragments" : 
 		[
 			{
-				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MDd /Zi /Ob0 /Od /RTC1",
+				"fragment" : "/DWIN32 /D_WINDOWS /W3 /GR /EHsc /MD /O1 /Ob1 /DNDEBUG",
 				"role" : "flags"
 			},
 			{
-				"fragment" : "/machine:x64 /debug /INCREMENTAL /subsystem:console",
+				"fragment" : "/machine:x64 /INCREMENTAL:NO /subsystem:console",
 				"role" : "flags"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
 				"backtrace" : 2,
-				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455d.lib\"",
+				"fragment" : "\"C:\\Users\\Usuario\\Desktop\\Escritorio\\ARIF\\UCN\\QUINTO SEMESTRE\\ESTRUCTURA DE DATOS\\opencv\\build\\x64\\vc15\\lib\\opencv_world455.lib\"",
 				"role" : "libraries"
 			},
 			{
@@ -220,7 +220,7 @@
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "src/logic/LinkedList.cpp",
+			"path" : "src/logic/KDTree.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

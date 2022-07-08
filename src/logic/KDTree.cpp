@@ -19,22 +19,23 @@ void KDTree::printInOrder(NodePerson* raiz){
 NodePerson* KDTree::insertar(vector<NodePerson> personas, int prof){
     if(!personas.empty()){
         int k = personas.size();
-        int axis = prof % 2;
+        int axis = prof % 2; // creo q es %k
 
         //NUESTRO METODO SORT Y MEDIAN}
         if(axis == 0){ //esta en el eje x
             for(int i = 0; i< k;i++){
-            for(int j=0;j<k-1;j++){
-                if(personas[j].getPerson().getxCentro()>personas[j+1].getPerson().getxCentro()){
-                    NodePerson aux = personas[j];
-                    personas[j] = personas[j+1];
-                    personas[j+1] =aux;
-                }
-            }    
+                for(int j=0;j<k;j++){
+                    if(personas[j].getPerson().getxCentro()>personas[j+1].getPerson().getxCentro()){
+                        NodePerson aux = personas[j];
+                        personas[j] = personas[j+1];
+                        personas[j+1] =aux;
+                    }
+                }    
+            }
         }
-        }else{// axis = 1, eje y
+        else{// axis = 1, eje y
             for(int i = 0; i< k;i++){
-                for(int j=0;j<k-1;j++){
+                for(int j=0;j<k;j++){
                     if(personas[j].getPerson().getyCentro()>personas[j+1].getPerson().getyCentro()){
                         NodePerson aux = personas[j];
                         personas[j] = personas[j+1];
@@ -57,7 +58,7 @@ NodePerson* KDTree::insertar(vector<NodePerson> personas, int prof){
             NodosDers.push_back(personas[i]);
         }
         this->raiz.getHIzq() = insertar(NodosIzq,prof+1);
-    
+        this->raiz->getHDer() = insertar(NodosDers,prof+1)
     
     }    
 }   

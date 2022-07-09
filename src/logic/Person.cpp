@@ -19,6 +19,9 @@ Person::Person(Rect& r){
 Mat Person::getImg(){
     return this->img;
 }
+bool Person::getEstado(){
+    return this->estado;
+}
 string Person::getEntity(){
     return this->entity;
 }
@@ -43,6 +46,11 @@ int Person::getyFinal(){
 Rect Person::getRectangulo(){
     return this->rectangulo;
 }
+
+void Person::setEstado(bool estado){
+    this->estado = estado;
+}
+
 void Person::setRectangulo(Rect r){
     this->rectangulo = r; 
     xInitial = r.x;

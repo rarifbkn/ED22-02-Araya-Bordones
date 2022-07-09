@@ -12,16 +12,14 @@ Person::Person(Rect& r){
     yInitial = r.y;
     xFinal = r.x + r.width;
     yFinal = r.y + r.height;
-    xCentro = r.x + ((float)r.width/2.0);
-    yCentro = r.y + ((float)r.height/2.0);
+    xCentro = r.x + ((int)r.width/2.0);
+    yCentro = r.y + ((int)r.height/2.0);
 }
 
 Mat Person::getImg(){
     return this->img;
 }
-bool Person::getEstado(){
-    return this->estado;
-}
+
 string Person::getEntity(){
     return this->entity;
 }
@@ -45,10 +43,6 @@ int Person::getyFinal(){
 }
 Rect Person::getRectangulo(){
     return this->rectangulo;
-}
-
-void Person::setEstado(bool estado){
-    this->estado = estado;
 }
 
 void Person::setRectangulo(Rect r){

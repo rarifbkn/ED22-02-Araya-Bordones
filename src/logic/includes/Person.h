@@ -11,7 +11,7 @@ private:
     Mat img;
     string entity;
     Rect rectangulo;
-    bool estado;
+    int area;
     int xInitial;
     int yInitial;
     int xFinal;
@@ -24,7 +24,6 @@ public:
     Person(Rect& r);
     Mat getImg();
     string getEntity();
-    bool getEstado();
     int getEntries();
     int getExit();
     int getxInitial();
@@ -34,8 +33,7 @@ public:
     int getxCentro();
     int getyCentro();
     Rect getRectangulo();
-
-    void setEstado(bool estado);  
+ 
     void setImg(Mat newImg);
     void setEntity(string newEntity);
     void setxInitial(int x);

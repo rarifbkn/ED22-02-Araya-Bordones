@@ -59,5 +59,6 @@ NodePerson* KDTree::insertar(vector<NodePerson> personas, int prof){
         Pmediana = insertar(NodosIzq,prof+1);
         Pmediana = insertar(NodosDers,prof+1);
         return Pmediana;
-    }    
+    } 
+    return nullptr;   
 }   

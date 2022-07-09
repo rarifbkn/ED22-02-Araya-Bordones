@@ -7,7 +7,6 @@
 #include "logic/includes/KDTree.h"
 #include <chrono>
 
-//!EN EL KDTREE COMO FUNCIONAN SUS ÚNTEROS EN LA RECURSIVIDAD 
 //!SI SE LIMPIA LA LISTA DE NODITOS COMO ELIMINAMOS A LA PERSONA CUANDO SALE DEL FRAME
 //!COMO INSERTAMOS A LA NUEVA PERSONA EN EL FRAME
 
@@ -38,6 +37,8 @@ int main(int, char**) {
     int numberPerson = 0;
     int contEntrada = 0;
     int contSalidas = 0;
+    int area = 0;
+
     //lectura de imagenes
     vector<string> paths;
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen01.png");
@@ -67,7 +68,16 @@ int main(int, char**) {
             //crea la identidad de la persona
             string aux = to_string(numberPerson);
             p = detection;
+            
+            //! revisar como comparar areas para saber si entran o salen, crear etiquetas >:vvvvv
+            if(p.getxCentro() > imgRow && p.getyCentro() > img.cols+1 ){ // lo compara con la linea del centro
+
+            }
             p.setEntity(identidad + aux);
+
+            /*
+            identificaremos las areas 1 y 2 para saber si entran o salen segun cambien de un area a otra
+            */
             putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
             rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
             circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2); 

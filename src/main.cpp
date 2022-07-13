@@ -15,6 +15,8 @@ using namespace cv;
 
 //def functions
 void AdjustBox(Rect& box);
+int MenuGuardia();
+int MenuAdmin();
 
 int main(int, char**) {
     //cronometro
@@ -30,10 +32,10 @@ int main(int, char**) {
     string identidad ="ID";
     vector<Mat> imagenes ;
     KDTree arbol ;
-    vector<NodePerson> noditos;
+    vector<Person> personas;
     Person p;
 
-
+    int accion = 0;
     int numberPerson = 0;
     int contEntrada = 0;
     int contSalidas = 0;
@@ -45,16 +47,34 @@ int main(int, char**) {
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen02.png");
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen03.png");
     for(auto& path:paths){
-        //LECTURA IMAGEN
+        //*MENUS 
+        String respuesta = "";
+        cout << "Como desea ingresar(guardia/administrador): ";
+        cin >> respuesta;
+       
+        while(respuesta != "guardia"||respuesta != "administrador"){
+            cout<<endl;
+            cout << "error, ingrese una respuesta valida(guardia/administrador): ";
+            cin >> respuesta;    
+        }
+        cout<<endl;
+        
+        if(respuesta == "guardia"){
+            accion = MenuGuardia();
+        }else { //de lo contrario entra al administrador
+            accion = MenuAdmin();
+        }
+
+        //lee la imagem
         Mat img = imread(path);
 
+        //Comprueba si la imagen  esta
         if(!img.data){
         cout<< "Image not found";
         return -1;
         }
         //*Mitad de la imagen
         int imgRow = img.rows+1;
-
         //*Linea de referencia
         line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
 
@@ -62,13 +82,16 @@ int main(int, char**) {
         hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
         //itero por cada deteccion que reconoce el hog
         
+        //!aca debiese solo iterar el arbol de personas detectadas
+
         for(auto& detection :detections){
+            
             //ajusta la caja
             AdjustBox(detection);
             //crea la identidad de la persona
             string aux = to_string(numberPerson);
             p = detection;
-            
+
             //! revisar como comparar areas para saber si entran o salen, crear etiquetas >:vvvvv
             if(p.getxCentro() > imgRow && p.getyCentro() > img.cols+1 ){ // lo compara con la linea del centro
 
@@ -78,17 +101,17 @@ int main(int, char**) {
             /*
             identificaremos las areas 1 y 2 para saber si entran o salen segun cambien de un area a otra
             */
+
+            // llamo al arbol e invoco el requerimiento
+
+
             putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
             rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
             circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2); 
-
-            NodePerson nodo = NodePerson(p);
-            noditos.push_back(nodo);
+            personas.push_back(p);
             //nos sirve para el ID y el numero de este: ej: "ID2"
             numberPerson++;
-        }
-        arbol.insertar(noditos,0); //creamos el arbol ,pero falta //!saber la profundidad ???
-        
+        }        
         //calcularDistancia(Personas,NuevosCentroides,numberPerson);
         namedWindow("Image");
         imshow("Image",img);
@@ -103,6 +126,32 @@ void AdjustBox(Rect& box){
         box.width = cvRound(box.width*0.8);
         box.y += cvRound(box.height*0.06);
         box.height = cvRound(box.height*0.8);
+}
+
+int MenuGuardia(){
+    int respuesta;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<";;;;;;;;  BIENVENIDO GUARDIA :D  ;;;;;;;"<<endl;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<"seleccione la accion a realizar con la secuencia actual"<<endl;
+    cout<<"1. Dibujo de las personas en la imagen"<<endl;
+    cout<<"2. Trafico de entrada"<<endl;
+    cout<<"3. Trafico de salida"<<endl;
+    cout<<"4. Velocidad de entrada personas/hora "<<endl;
+    cout<<"5. Velocidad de salida personas/hora "<<endl;
+    cin>>respuesta;
+    return respuesta;     
+}
+
+int MenuAdmin(){
+    int respuesta;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<";;;;;;;;  Bienvenido Administrador ;;;;;"<<endl;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<"seleccione la accion a realizar con la secuencia actual"<<endl;
+    cout<<"1. seleccionar archivo de imagenes a analizar"<<endl;
+    cin>>respuesta;     
+    return respuesta;    
 }
 
 

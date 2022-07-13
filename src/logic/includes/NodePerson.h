@@ -1,5 +1,5 @@
 
-#ifndef NODEAXIS_H
+#ifndef NODEPERSON_H
 #define NODEPERSON_H
 #include "Person.h"
 

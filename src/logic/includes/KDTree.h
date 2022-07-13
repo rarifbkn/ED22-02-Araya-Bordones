@@ -12,6 +12,6 @@ class KDTree{
     KDTree();
     NodePerson* getRaiz();
     void printInOrder(NodePerson* raiz);
-    NodePerson* insertar(vector<NodePerson> personas, int prof);
+    Person* insertar(vector<Person> personas, int prof);
     void eliminar(int clave);
 };

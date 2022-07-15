@@ -12,7 +12,7 @@
 
 ## Resumen 
 
->El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y listas enlazadas simples. 
+>El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y listas enlazadas simples.//arboles binarios(KdTree). 
 
 ## 1. Introducción
 
@@ -44,7 +44,7 @@ La solución propuesta consiste en la detección de las personas ubicando el cen
 Implementar histogramas de gradientes orientados por medio del método HOGDescriptor, el cual por medio de diversos filtros de colores identifica el objeto que resalta dentro de la imagen.  
 
 ->Información personas
-Por medio de lista enlazada se almacenara a las personas reconocidas por el detector.
+Por medio de lista enlazadas //arboles binarios// se almacenara a las personas reconocidas por el detector.
 
 ->Cálculo
 Luego de estructurar la información se calculará tráfico, cantidad y velocidad de entrada y salida de personas.  
@@ -71,14 +71,15 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
 
 ->Person
 ->NodePerson
-->linkedList
+->linkedList//borrar
+->KDTree
 ->Detector
 
 ![DIAGRAMA DE CLASES](images/Diagrama_de_clases_EDD.png)
 
-### 2.3 Implementación
+### 2.3 Implementación //Editar
 
-    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos Lista Enlazada simple
+    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos **Lista Enlazada simple** //Arboles binarios
     
     -> el histograma de gradientes orientados por medio del codigo:
 
@@ -132,9 +133,9 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
 
 ## 3. Resultados obtenidos
 
-    Por cada imagen leida en el programa se obtuvo la detección de personas correspondientes de forma correcta e identificada por una identidad, sin embargo dependiendo de la calidad de la imagen en cuanto a luz o colores puede variar el margen de error de detección, asi como con muchas personas juntas , puesto que confunden al área de detección del programa.
+    Por cada imagen leída en el programa se obtuvo la detección de personas correspondientes de forma correcta e identificada por una identidad, sin embargo dependiendo de la calidad de la imagen en cuanto a luz o colores puede variar el margen de error de detección, asi como con muchas personas juntas , puesto que confunden al área de detección del programa.
 
-## 4. Conclusiones
+## 4. Conclusiones//Editar
 
 Tras estas 3 semanas de trabajo y todo lo mencionado anteriormente, se logró el 60% de las historias requeridas para esta primera entrega, aun así el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad, con un buen uso de la libreria openCV y desempeño de parte de los programadores.
 El nuevo desafío consistira en implementar árboles binarios(AVL, HEAP) para la identificación de personas. 
@@ -150,7 +151,7 @@ https://opencv.org/releases/
 https://visualstudio.microsoft.com/es/downloads/
 https://cmake.org/download/
 
-## Anexo C: Dificultades y problemáticas durante el desarrollo del taller 
+## Anexo C: Dificultades y problemáticas durante el desarrollo del taller //editar
 
 Durante el desarrollo se lograron muchos avances, pero en conjunto de diversos problemas se dificultó el trabajar en la IDE visual Studio code puesto que requeria de muchas herramientas externas para trabajar con el lenguaje c++, a pesar de tener mucha ayuda por parte del profesor y ayudante del ramo Estructura de Datos, no fue suficiente para aclarar todas las dudas que fueron surgiendo, por último el correr en el programa un video hacia que los recursos del pc llegaran a niveles altos de consumo que realentizaban el proceso y no se logro dibujar sobre el video los rectangulos de detección por falta de conocimiento.
 

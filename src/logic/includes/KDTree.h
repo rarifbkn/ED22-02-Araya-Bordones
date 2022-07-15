@@ -1,6 +1,14 @@
 #include "NodePerson.h"
 #include <iostream>
 #include <stdlib.h>
+#include <algorithm>
+#include <cmath>
+#include <functional>
+#include <iterator>
+#include <limits>
+#include <memory>
+#include <vector>
+
 
 using namespace std;
 

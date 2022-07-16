@@ -5,6 +5,7 @@
 
 using namespace std;
 using namespace cv;
+using point_t = std::vector< double>;
 
 class Person{
 private:
@@ -18,10 +19,12 @@ private:
     int yFinal;
     int xCentro;
     int yCentro;
+    point_t centroCordenadas;
 
 public:
     Person();
     Person(Rect& r);
+    vector<double> getCord();
     Mat getImg();
     string getEntity();
     int getEntries();

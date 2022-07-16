@@ -82,7 +82,7 @@ int main(int, char**) {
         hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
         //itero por cada deteccion que reconoce el hog
         
-        //!aca debiese solo iterar el arbol de personas detectadas
+        //!aca debiese solo iterar el arbol de personas detectadas----- Arbol  switch 
 
         for(auto& detection :detections){
             

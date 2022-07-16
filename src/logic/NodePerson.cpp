@@ -28,6 +28,12 @@ NodePerson::operator bool() { return (!this->persona.getCord().empty()); }
 NodePerson::operator point_t() { return this->persona.getCord(); }
 NodePerson::operator size_t() { return index; }
 NodePerson::operator pointIndex() { return pointIndex(this->persona.getCord(), index); }
+KDNodePtr NodePerson::getIzq(){
+    return this->Izq;
+}
+KDNodePtr NodePerson::getDer(){
+    return this->Der;
+}
 
 KDNodePtr NewKDNodePtr() {
     KDNodePtr mynode = std::make_shared< NodePerson >();

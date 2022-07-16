@@ -11,14 +11,14 @@ using indexArr = std::vector<size_t>;
 using pointIndex = typename std::pair< std::vector< double >, size_t >;
 
 class NodePerson{
-    
+    using KDNodePtr = std::shared_ptr< NodePerson >;   
 private:
     const size_t index = 2;
     Person persona;
     KDNodePtr Izq;
     KDNodePtr Der;
 public:
-    using KDNodePtr = std::shared_ptr< NodePerson >;
+   
     NodePerson();
     NodePerson(Person &);
     NodePerson(Person  &, const KDNodePtr &,const KDNodePtr &);
@@ -27,7 +27,8 @@ public:
     // getter
     double coord(const size_t &);
     Person getPerson();
-
+    KDNodePtr getIzq();
+    KDNodePtr getDer();
     // conversions
     explicit operator bool();
     explicit operator point_t();

@@ -20,6 +20,8 @@ class comparer{
     using pointVec = std::vector<point_t>;
 
 class KDTree{
+    //constructor por defecto
+    KDNodePtr cercano(const point_t &pt);
     private:
         KDNodePtr raiz;
         KDNodePtr hojas;
@@ -56,5 +58,3 @@ class KDTree{
 
 };
 
-//constructor por defecto
-KDNodePtr cercano(const point_t &pt);

@@ -12,7 +12,7 @@
 
 ## Resumen 
 
->El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y listas enlazadas simples.//arboles binarios(KdTree). 
+>El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y arboles binarios. 
 
 ## 1. Introducción
 
@@ -30,9 +30,9 @@ Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer 
 
 **Objetivos específicos**
 
-1. -Estructurar el problema y la creación de las clases principales.
-2. -Desarrollo del código para reconocer a las personas.
-3. -Mejorar el código con la inclusión de árboles como estructura principal.
+1. Estructurar el problema y la creación de las clases principales.
+2. Desarrollo del código para reconocer a las personas.
+3. Mejorar el código con la inclusión de árboles como estructura principal.
 
 ### 1.3 Solución propuesta
 
@@ -71,19 +71,18 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
 
 ->Person
 ->NodePerson
-->linkedList//borrar
 ->KDTree
 ->Detector
 
 ![DIAGRAMA DE CLASES](images/Diagrama_de_clases_EDD.png)
 
-### 2.3 Implementación //Editar
+### 2.3 Implementación //Editar//
 
-    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos **Lista Enlazada simple** //Arboles binarios
+    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos árboles binarios.
     
     -> el histograma de gradientes orientados por medio del codigo:
 
-    >// crea el detector para luego guardarlo en un vector
+    > Crea el detector para luego guardarlo en un vector
     > HOGDescriptor hog;
     > hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
     > vector<Rect> detections;  
@@ -137,8 +136,7 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
 
 ## 4. Conclusiones//Editar
 
-Tras estas 3 semanas de trabajo y todo lo mencionado anteriormente, se logró el 60% de las historias requeridas para esta primera entrega, aun así el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad, con un buen uso de la libreria openCV y desempeño de parte de los programadores.
-El nuevo desafío consistira en implementar árboles binarios(AVL, HEAP) para la identificación de personas. 
+Tras este tiempo de trabajo y todo lo mencionado anteriormente, se logró el 90% de las historias requeridas para esta segunda entrega, el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad junto a la implementación de arboles binarios.
 
 # Anexos
 

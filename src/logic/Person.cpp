@@ -14,6 +14,8 @@ Person::Person(Rect& r){
     yFinal = r.y + r.height;
     xCentro = r.x + ((int)r.width/2.0);
     yCentro = r.y + ((int)r.height/2.0);
+    centroCordenadas.push_back(xCentro); 
+    centroCordenadas.push_back(yCentro); 
 }
 
 Mat Person::getImg(){
@@ -52,9 +54,14 @@ void Person::setRectangulo(Rect r){
     xFinal = r.x + r.width;
     yFinal = r.y + r.height;
     xCentro = r.x + ((float)r.width/2.0);
-    yCentro = r.y + ((float)r.height/2.0);  
+    yCentro = r.y + ((float)r.height/2.0); 
+    centroCordenadas.push_back(xCentro); 
+    centroCordenadas.push_back(yCentro); 
 }
 
+vector<double> Person::getCord(){
+    return this->centroCordenadas;
+}
 void Person::setImg(Mat newImage){
     this->img = newImage;
 }

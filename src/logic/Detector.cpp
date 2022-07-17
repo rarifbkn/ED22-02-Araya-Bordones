@@ -5,13 +5,17 @@ Detector::Detector(){
 }
 
 LinkedList Detector::detect(Mat img){
-        
+
         vector<Rect> detections;
         LinkedList listaPersonas;
+
         int numberPerson = 0;
         string id = "ID";
-        hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);  
+        hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);
         for(auto& detection :detections){
+            cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+            cout<<";;;;;;;;      DETECTANDO    ;;;;;;;"<<endl;
+            cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
             //ajusta la caja
             AdjustBox(detection);
             Person p;
@@ -22,7 +26,9 @@ LinkedList Detector::detect(Mat img){
             listaPersonas.insert(p);
             numberPerson++; 
         }
-        
+        cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+        cout<<";;;;;;;;      retorno    ;;;;;;;"<<endl;
+        cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
         return listaPersonas;
 }
 void Detector::AdjustBox(Rect& box){

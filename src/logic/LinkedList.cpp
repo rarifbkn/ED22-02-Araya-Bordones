@@ -23,7 +23,6 @@ Person LinkedList::getPersonI(int i){
 void LinkedList::insert(Person& p){
     NodePerson n = NodePerson(p);
     NodePerson* nodoptr = &n;
-
     if(isEmpty()){
         this->first = nodoptr;    
     }else{
@@ -33,6 +32,7 @@ void LinkedList::insert(Person& p){
         }
         aux->setNext(nodoptr);
     }
+
 }
 LinkedList::~LinkedList(){
     this->first->~NodePerson();

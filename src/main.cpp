@@ -28,7 +28,7 @@ int main(int, char**) {
     chrono::duration<float,milli> duration= end - start; 
     //cout<<duration.count() y mili es 1000 son 1 sec
 
-    Detector hog = Detector();
+    Detector hog ;
     LinkedList listaPersonas;
     int accion = 0;
     int numberPerson = 0;
@@ -39,42 +39,35 @@ int main(int, char**) {
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen01.png");
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen02.png");
     paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen03.png");
-    cout<<"INICIANDOOOOOOOOOOOOOOOOOOOOO"<<endl;
     for(auto& path:paths){
         //LECTURA IMAGEN
-        cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-        cout<<"             IMAGEN          " <<endl;
-        cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;" <<endl;
         Mat img = imread(path);
-
         if(!img.data){
         cout<< "Image not found";
         return -1;
         }
-        
-        //*mitad filas
-        int imgRow = img.rows+1;
-        //*Linea de referencia
-        line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
-
-        //*COMIENZO A RECORRER LA LISTA PARA LOS REQUERIMIENTOS 
         listaPersonas = hog.detect(img);
+        //mitad filas
+        int imgRow = img.rows+1;
+        //linea de referencia
+        line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
+        //
         String respuesta = "";
         cout << "Como desea ingresar(guardia/administrador): ";
         cin >> respuesta;
 
-        while(respuesta != "guardia"||respuesta != "administrador"){
+        while(!respuesta._Equal("guardia") && !respuesta._Equal("administrador")){
             cout<<endl;
             cout << "error, ingrese una respuesta valida(guardia/administrador): ";
             cin >> respuesta;
         }
         cout<<endl;
-
         if(respuesta == "guardia"){
             accion = MenuGuardia();
         }else { //de lo contrario entra al administrador
             accion = MenuAdmin();
         }
+        
         if(respuesta._Equal("guardia")){
             switch(accion){
                 case 1:
@@ -96,11 +89,7 @@ int main(int, char**) {
         }
         
                
-        //calcularDistancia(Personas,NuevosCentroides,numberPerson);
-        namedWindow("Image");
-        imshow("Image",img);
-        waitKey(0);
-        destroyAllWindows();
+       
     }
 
 }  
@@ -117,7 +106,7 @@ int MenuGuardia(){
     cout<<"4. Velocidad de entrada personas/hora "<<endl;
     cout<<"5. Velocidad de salida personas/hora "<<endl;
     cin>>respuesta;
-    while(respuesta != 1 || respuesta != 2 || respuesta != 3 || respuesta != 4 || respuesta != 5){
+    while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4 && respuesta != 5){
         cout<<"ERROR...Por favor seleccione una opcion correcta:";
         cout<<endl<<"1. Dibujo de las personas en la imagen"<<endl;
         cout<<"2. Trafico de entrada"<<endl;

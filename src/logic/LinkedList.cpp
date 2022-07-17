@@ -32,6 +32,7 @@ void LinkedList::insert(Person& p){
         }
         aux->setNext(nodoptr);
     }
+    
 
 }
 LinkedList::~LinkedList(){

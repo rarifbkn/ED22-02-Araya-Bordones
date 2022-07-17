@@ -8,9 +8,6 @@
 #include "logic/includes/Detector.h"
 #include <chrono>
 
-using namespace std;
-using namespace cv;
-
 //def functions
 void AdjustBox(Rect& box);
 int MenuGuardia();
@@ -87,9 +84,6 @@ int main(int, char**) {
                     break;
             }
         }
-        
-               
-       
     }
 
 }  

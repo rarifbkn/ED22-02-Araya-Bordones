@@ -20,33 +20,34 @@ class comparer{
     using pointVec = std::vector<point_t>;
 
 class KDTree{
-    //constructor por defecto
-    KDNodePtr cercano(const point_t &pt);
-    private:
-        KDNodePtr raiz;
-        KDNodePtr hojas;
+   
 
-        KDNodePtr makeTree(const pointIndexArr::iterator &begin,
-                            const pointIndexArr::iterator &end, 
-                            const size_t &length,const size_t &level);
+    KDNodePtr raiz;
+    KDNodePtr hojas;
 
-        KDNodePtr cercano(const KDNodePtr &rama,
-                            const point_t &pt, 
-                            const size_t &level, 
-                            const KDNodePtr &best, 
-                            const double &best_dist );
+    KDNodePtr makeTree(const pointIndexArr::iterator &begin,
+                        const pointIndexArr::iterator &end, 
+                        const size_t &length,const size_t &level);
 
-        
-        pointIndexArr vecino(const KDNodePtr &branch, 
-                            const point_t &pt, 
-                            const double &rad, 
-                            const size_t &level );
+    KDNodePtr cercano(const KDNodePtr &rama,
+                        const point_t &pt, 
+                        const size_t &level, 
+                        const KDNodePtr &best, 
+                        const double &best_dist );
+
+    
+    pointIndexArr vecino(const KDNodePtr &branch, 
+                        const point_t &pt, 
+                        const double &rad, 
+                        const size_t &level );
 
     public:
         KDTree() = default;
         explicit KDTree(pointVec point_array);
 
         //Funcion cercano
+         //constructor por defecto
+        KDNodePtr cercano(const point_t &pt);
         point_t PuntoCercano(const point_t &pt);
         size_t IndexCercano(const point_t &pt);
         pointIndex PointIndexCercano(const point_t &pt);
@@ -55,6 +56,10 @@ class KDTree{
         pointIndexArr vecino(const point_t &pt, const double &rad);
         pointVec puntosVecinos(const point_t &pt, const double &rad);
         indexArr IndexVecinos(const point_t &pt, const double &rad);
+
+        KDNodePtr getRaiz();
+        
+        
 
 };
 

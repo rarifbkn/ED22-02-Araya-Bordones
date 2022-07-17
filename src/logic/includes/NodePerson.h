@@ -10,18 +10,18 @@ using personas = std::vector<Person>;
 using indexArr = std::vector<size_t>;
 using pointIndex = typename std::pair< std::vector< double >, size_t >;
 
+
 class NodePerson{
-    using KDNodePtr = std::shared_ptr< NodePerson >;   
-private:
+public: 
+    using KDNodePtr = std::shared_ptr< NodePerson >; 
     const size_t index = 2;
     Person persona;
     KDNodePtr Izq;
     KDNodePtr Der;
-public:
    
     NodePerson();
-    NodePerson(Person &);
-    NodePerson(Person  &, const KDNodePtr &,const KDNodePtr &);
+    NodePerson(Person p);
+
     ~NodePerson();
     
     // getter

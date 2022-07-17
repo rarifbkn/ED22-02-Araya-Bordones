@@ -7,19 +7,12 @@
 #include <memory>
 #include <vector>
 
-NodePerson::NodePerson() = default;
-NodePerson::NodePerson(Person &p){
+NodePerson::NodePerson(){
+    
+}
+NodePerson::NodePerson(Person p){
     persona = p;
 }
-
-NodePerson::NodePerson(Person &p, const KDNodePtr &left_,
-               const KDNodePtr &right_) {
-                
-    persona = p;            
-    Izq = left_;
-    Der = right_;
-}
-
 
 NodePerson::~NodePerson() = default;
 

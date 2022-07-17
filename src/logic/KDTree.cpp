@@ -236,16 +236,20 @@ indexArr KDTree::IndexVecinos(  //
                    [](pointIndex x) { return x.second; });
     return nbhi;
 }
-   // default caller
-     KDNodePtr KDTree::cercano(const point_t &pt) {
-    size_t level = 0;
-    // KDNodePtr best = branch;
-    double branchDist = dist2(point_t(*raiz), pt);
-    return cercano(raiz,          // beginning of tree
-                    pt,            // point we are querying
-                    level,         // start from level 0
-                    raiz,          // best is the root
-                    branchDist);  // best_dist = branch_dist
+// default caller
+KDNodePtr KDTree::cercano(const point_t &pt) {
+size_t level = 0;
+// KDNodePtr best = branch;
+double branchDist = dist2(point_t(*raiz), pt);
+return cercano(raiz,          // beginning of tree
+                pt,            // point we are querying
+                level,         // start from level 0
+                raiz,          // best is the root
+                branchDist);  // best_dist = branch_dist
+}
+
+KDNodePtr KDTree::getRaiz(){
+    return this->raiz;
 }
 
 

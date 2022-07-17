@@ -36,7 +36,8 @@ public:
     int getxCentro();
     int getyCentro();
     Rect getRectangulo();
- 
+    
+    void setCord(vector<double> cord);
     void setImg(Mat newImg);
     void setEntity(string newEntity);
     void setxInitial(int x);
@@ -45,7 +46,7 @@ public:
     void setyFinal(int y);
     void setxCentro(int x);
     void setyCentro(int y);
-    void setRectangulo(Rect r);
+    
     
 };
 

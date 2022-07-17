@@ -5,10 +5,8 @@
 #include "logic/includes/Person.h"
 #include "logic/includes/NodePerson.h"
 #include "logic/includes/KDTree.h"
+#include "logic/includes/Detector.h"
 #include <chrono>
-
-//!SI SE LIMPIA LA LISTA DE NODITOS COMO ELIMINAMOS A LA PERSONA CUANDO SALE DEL FRAME
-//!COMO INSERTAMOS A LA NUEVA PERSONA EN EL FRAME
 
 using namespace std;
 using namespace cv;
@@ -17,29 +15,23 @@ using namespace cv;
 void AdjustBox(Rect& box);
 int MenuGuardia();
 int MenuAdmin();
+void dibujoPersonas(Mat img , KDTree arbol);
 
 int main(int, char**) {
     //cronometro
     auto start = chrono::system_clock::now();
     auto end = chrono::system_clock::now();
     chrono::duration<float,milli> duration= end - start; 
-    //cout<<duration.count() y mili es 1000 son 1 sec
-
-    //*histograma de gradientes
-    HOGDescriptor hog;
-    hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector());
-
-    string identidad ="ID";
+    //cout<<duration.count() y mili es 1000 son 1 sec 
     vector<Mat> imagenes ;
     KDTree arbol ;
     vector<Person> personas;
-    Person p;
 
     int accion = 0;
     int numberPerson = 0;
     int contEntrada = 0;
     int contSalidas = 0;
-    int area = 0;
+    int zona = 0;
 
     //lectura de imagenes
     vector<string> paths;
@@ -73,60 +65,33 @@ int main(int, char**) {
         cout<< "Image not found";
         return -1;
         }
-        //*Mitad de la imagen
+
+        //*Total de filas
         int imgRow = img.rows+1;
-        //*Linea de referencia
+        //*Mitad de la imagen, mitad de las filas
         line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
-
-        vector<Rect> detections;
-        hog.detectMultiScale(img,detections,0,Size(3,4),Size(4,4),1.05,2);   
-        //itero por cada deteccion que reconoce el hog
         
-        //!aca debiese solo iterar el arbol de personas detectadas----- Arbol  switch 
-
-        for(auto& detection :detections){
-            
-            //ajusta la caja
-            AdjustBox(detection);
-            //crea la identidad de la persona
-            string aux = to_string(numberPerson);
-            p = detection;
-
-            //! revisar como comparar areas para saber si entran o salen, crear etiquetas >:vvvvv
-            if(p.getxCentro() > imgRow && p.getyCentro() > img.cols+1 ){ // lo compara con la linea del centro
-
-            }
-            p.setEntity(identidad + aux);
-
-            /*
-            identificaremos las areas 1 y 2 para saber si entran o salen segun cambien de un area a otra
-            */
-
-            // llamo al arbol e invoco el requerimiento
-
-
-            putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
-            rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
-            circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2); 
-            personas.push_back(p);
-            //nos sirve para el ID y el numero de este: ej: "ID2"
-            numberPerson++;
-        }        
-        //calcularDistancia(Personas,NuevosCentroides,numberPerson);
+        
+        
+        
+        //*Hacer los requerimientos e ir borrando arbol por imagem
+        //! aca debiese solo iterar el arbol de personas detectadas----- Arbol  switch 
+        if(respuesta._Equal("guardia")){
+            switch(accion){
+                case 1:
+                    dibujoPersonas(img,arbol);
+                    break;
+            }    
+        }
+         //calcularDistancia(Personas,NuevosCentroides,numberPerson);
         namedWindow("Image");
         imshow("Image",img);
         waitKey(0);
-        destroyAllWindows();
-    }
-}  
-
-void AdjustBox(Rect& box){
-     //Reajusta el rectangulo
-        box.x += cvRound(box.width*0.1);
-        box.width = cvRound(box.width*0.8);
-        box.y += cvRound(box.height*0.06);
-        box.height = cvRound(box.height*0.8);
+        destroyAllWindows();    
+        }       
+       
 }
+
 
 int MenuGuardia(){
     int respuesta;
@@ -140,6 +105,15 @@ int MenuGuardia(){
     cout<<"4. Velocidad de entrada personas/hora "<<endl;
     cout<<"5. Velocidad de salida personas/hora "<<endl;
     cin>>respuesta;
+    while(respuesta != 1 || respuesta != 2 || respuesta != 3 || respuesta != 4 || respuesta != 5){
+        cout<<"ERROR...Por favor seleccione una opcion correcta:";
+        cout<<endl<<"1. Dibujo de las personas en la imagen"<<endl;
+        cout<<"2. Trafico de entrada"<<endl;
+        cout<<"3. Trafico de salida"<<endl;
+        cout<<"4. Velocidad de entrada personas/hora "<<endl;
+        cout<<"5. Velocidad de salida personas/hora "<<endl;
+        cin>>respuesta;
+    }
     return respuesta;     
 }
 
@@ -148,10 +122,29 @@ int MenuAdmin(){
     cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
     cout<<";;;;;;;;  Bienvenido Administrador ;;;;;"<<endl;
     cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<"seleccione la accion a realizar con la secuencia actual"<<endl;
-    cout<<"1. seleccionar archivo de imagenes a analizar"<<endl;
-    cin>>respuesta;     
+    cout<<"seleccione la accion a realizar con la secuencia actual:";
+    cout<<endl<<"1. seleccionar archivo de imagenes a analizar"<<endl;
+    cin>>respuesta; 
+    while (respuesta != 1){
+        cout<<"ERROR...Por favor seleccione una opcion correcta:";
+        cout<<endl<<"1. seleccionar archivo de imagenes a analizar"<<endl;
+        cin>>respuesta;     
+    }    
     return respuesta;    
+}
+
+void dibujoPersonas(Mat img, KDTree arbol){
+    KDNodePtr raiz = arbol.getRaiz();
+    putText(img,p.getEntity(),Point(p.getxCentro(),p.getyCentro()+5),FONT_HERSHEY_COMPLEX,0.60,Scalar(0,255,0));
+    rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
+    circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2); 
+    /*
+    if(raiz != nullptr){
+		print(raiz->dato);
+		recorridoPreOrder(raiz->izq);
+		recorridoPreOrder(raiz->der);	
+	}
+    */
 }
 
 

@@ -47,18 +47,9 @@ Rect Person::getRectangulo(){
     return this->rectangulo;
 }
 
-void Person::setRectangulo(Rect r){
-    this->rectangulo = r; 
-    xInitial = r.x;
-    yInitial = r.y;
-    xFinal = r.x + r.width;
-    yFinal = r.y + r.height;
-    xCentro = r.x + ((float)r.width/2.0);
-    yCentro = r.y + ((float)r.height/2.0); 
-    centroCordenadas.push_back(xCentro); 
-    centroCordenadas.push_back(yCentro); 
+void Person::setCord(point_t cord){
+    this->centroCordenadas = cord;
 }
-
 vector<double> Person::getCord(){
     return this->centroCordenadas;
 }

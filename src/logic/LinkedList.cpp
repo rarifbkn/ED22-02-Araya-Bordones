@@ -20,15 +20,18 @@ Person LinkedList::getPersonI(int i){
     a++;
     }
 }
-void LinkedList::insert(NodePerson* n){
+void LinkedList::insert(Person& p){
+    NodePerson n = NodePerson(p);
+    NodePerson* nodoptr = &n;
+
     if(isEmpty()){
-        this->first = n;    
+        this->first = nodoptr;    
     }else{
         NodePerson* aux = first;
         while(aux->getNext() != nullptr){
             aux = aux->getNext();
         }
-        aux->setNext(n);
+        aux->setNext(nodoptr);
     }
 }
 LinkedList::~LinkedList(){

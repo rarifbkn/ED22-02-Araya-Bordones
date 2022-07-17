@@ -8,7 +8,7 @@ class LinkedList{
     public:
         LinkedList();
         NodePerson* getFirst();
-        void insert(NodePerson* n);
+        void insert(Person &p);
         Person getPersonI(int i);
         bool isEmpty();
         ~LinkedList();

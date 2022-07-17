@@ -22,6 +22,8 @@ LinkedList Detector::detect(Mat img){
             listaPersonas.insert(p);
             numberPerson++; 
         }
+        
+        return listaPersonas;
 }
 void Detector::AdjustBox(Rect& box){
      //Reajusta el rectangulo

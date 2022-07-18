@@ -12,7 +12,7 @@
 
 ## Resumen 
 
->El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y arboles binarios. 
+>El trabajo a realizar consiste en desarrollar una aplicación que cumpla con reconocer, enlistar y contabilizar el flujo de personas que circulan por las entradas principales de la empresa ACME. Esto se llevara a cabo por medio del uso de orientación a objeto y lista enlazada simple. 
 
 ## 1. Introducción
 
@@ -32,7 +32,7 @@ Desarrollar e implementar un programa que sea capaz de contabilizar y reconocer 
 
 1. Estructurar el problema y la creación de las clases principales.
 2. Desarrollo del código para reconocer a las personas.
-3. Mejorar el código con la inclusión de árboles como estructura principal.
+3. Desarrollar mejoras en cuanto a eficiencia.
 
 ### 1.3 Solución propuesta
 
@@ -44,7 +44,7 @@ La solución propuesta consiste en la detección de las personas ubicando el cen
 Implementar histogramas de gradientes orientados por medio del método HOGDescriptor, el cual por medio de diversos filtros de colores identifica el objeto que resalta dentro de la imagen.  
 
 ->Información personas
-Por medio de lista enlazadas //arboles binarios// se almacenara a las personas reconocidas por el detector.
+Por medio de lista enlazadas se almacenara a las personas reconocidas por el detector.
 
 ->Cálculo
 Luego de estructurar la información se calculará tráfico, cantidad y velocidad de entrada y salida de personas.  
@@ -67,18 +67,18 @@ Para el desarrollo de este taller se requiere:
 
 ### 2.2 Diseño 
 
-El diseño utilizado en este taller fue la por default del Cmake, con el módulo de logic el cual contiene las clases cpp con sus propios métodos, el módulo include contiene los headers de las clases, las cules son:
+El diseño utilizado en este taller fue la por default del CMake, con el módulo de logic el cual contiene las clases cpp con sus propios métodos, el módulo include contiene los headers de las clases, las cules son:
 
 ->Person
 ->NodePerson
-->KDTree
+->LinkedList
 ->Detector
 
 ![DIAGRAMA DE CLASES](images/Diagrama_de_clases_EDD.png)
 
 ### 2.3 Implementación //Editar//
 
-    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos árboles binarios.
+    En el talller se implementaron muchos métodos que ayudan a detectar y reconocer a las personas que aparecen en la secuencia de imágenes y para almacenar esta información se uso la estructura de datos Lista enlazada simple.
     
     -> el histograma de gradientes orientados por medio del codigo:
 
@@ -125,18 +125,15 @@ El diseño utilizado en este taller fue la por default del Cmake, con el módulo
     >   // por si no encuentra la imagen
     >   if(!img.data) return -1;}
 
-    ->Seguimiento de deteccion:
-    Por temas de tiempo y diversas dificultades explicadas dentro del informe en un anexo , no se logro realizar la diferenciacion de las personas entre las imagenes, es por esta razón que no se pudo continuar las historias 2,3,4,5,6,7 ya que era necesaria la diferenciacion entre estas para lograr el requirimiento
-
-    Sin embargo la lógica a implementar, fue que por cada imagen que pasara hiciera una lista de centroides nuevos para comparar por cada persona iterando en el vector de centroides, para asi obtener las personas que tienen una menor distancias entre los centroides de la persona y el centroide nuevo identificado y que por ende corresponden a la misma identidad, ó a los centroides que no se relacionan en distancia con ninguna persona anterior y que en conclusión serían personas nuevas. 
+      
 
 ## 3. Resultados obtenidos
 
     Por cada imagen leída en el programa se obtuvo la detección de personas correspondientes de forma correcta e identificada por una identidad, sin embargo dependiendo de la calidad de la imagen en cuanto a luz o colores puede variar el margen de error de detección, asi como con muchas personas juntas , puesto que confunden al área de detección del programa.
 
-## 4. Conclusiones//Editar
+## 4. Conclusiones
 
-Tras este tiempo de trabajo y todo lo mencionado anteriormente, se logró el 90% de las historias requeridas para esta segunda entrega, el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad junto a la implementación de arboles binarios.
+Tras este tiempo de trabajo y todo lo mencionado anteriormente, se logró el 90% de las historias requeridas para esta segunda entrega, el objetivo principal de reconocer a las personas  por secuencia de imágenes se logró en su totalidad.
 
 # Anexos
 
@@ -149,9 +146,13 @@ https://opencv.org/releases/
 https://visualstudio.microsoft.com/es/downloads/
 https://cmake.org/download/
 
-## Anexo C: Dificultades y problemáticas durante el desarrollo del taller //editar
+## Anexo C: Dificultades y problemáticas durante el desarrollo del taller 
 
-Durante el desarrollo se lograron muchos avances, pero en conjunto de diversos problemas se dificultó el trabajar en la IDE visual Studio code puesto que requeria de muchas herramientas externas para trabajar con el lenguaje c++, a pesar de tener mucha ayuda por parte del profesor y ayudante del ramo Estructura de Datos, no fue suficiente para aclarar todas las dudas que fueron surgiendo, por último el correr en el programa un video hacia que los recursos del pc llegaran a niveles altos de consumo que realentizaban el proceso y no se logro dibujar sobre el video los rectangulos de detección por falta de conocimiento.
+Durante el desarrollo se lograron muchos avances, pero en conjunto de diversos problemas se dificultó el trabajar en la IDE visual Studio code puesto que requeria de muchas herramientas externas para trabajar con el lenguaje c++, esto a pesar de tener mucha ayuda por parte del profesor y el ayudante de la asignatura Estructura de Datos, no fue suficiente para aclarar todas las dudas que fueron surgiendo, por último el uso del KDTree complico el avance ya que existe muy poca información sobre el uso de estos en c++. La lógica del KDTree consite en ser un árbol binario que guarda específicamente coordenadas de uno o mas planos, en este caso se intento trabajar con dos(eje x, eje y). La construcción del KDTree funcionaba calculando la mediana de la totalidad de coordenadas, de esta forma los hijos izquierdos correspondian a las coordenadas menores y los hijos derechos a las coordenadas mayores, ordenandose así por nivel intercambiando el eje(par eje x, imapar eje y), de esta forma se generaban cuadrantes que determinaban la cercanía de un nodo respecto a otro.
+
+Por otra parte por un error desconocido en el que el ayudante esta al tanto, el programa logra compilar, sin embargo no se termina de ejecutar correctamente. El error hace mención a un include xmemory que no se encuentra en nuestro código y que por descarte se supone que se originó en la libreria OpenCV. Se adjunta la evidencia:
+
+![Error](images/Error.jpg)
 
 # Referecia
 

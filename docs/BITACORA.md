@@ -18,4 +18,5 @@
 |06/JUL|OBJ-03| Implementación de kdTree en nuestro código|Arif y Scarlette|2 horas|2 horas|
 |08/JUL|OBJ-03| Implementación de kdTree en nuestro código|Arif y Scarlette|2 horas|2 horas|
 |15/JUL|OBJ-03| Finalización de requerimientos|Arif y Scarlette|2 horas|2 horas|
+|17/JUL|OBJ-03| Finalización de requerimientos|Arif y Scarlette|5 horas|8 horas|
 

@@ -3,13 +3,6 @@
 LinkedList::LinkedList(){
 
 }
-NodePerson* LinkedList::getFirst(){
-    return this->first;
-}
-bool LinkedList::isEmpty(){
-    return this->first;
-}
-
 void LinkedList::insert(Person& p){
     NodePerson n = NodePerson(p);
     NodePerson* nodoptr = &n;
@@ -22,9 +15,17 @@ void LinkedList::insert(Person& p){
         }
         aux->setNext(nodoptr);
     }
-    
-
 }
+bool LinkedList::isEmpty(){
+    return this->first;
+}
+
+NodePerson* LinkedList::getFirst(){
+    return this->first;
+}
+
 LinkedList::~LinkedList(){
     this->first->~NodePerson();
 }
+
+

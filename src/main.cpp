@@ -16,16 +16,12 @@ void DibujoPersonas(Mat img,LinkedList listaPersonas);
 int TraficoEntrada(LinkedList listaPersonas,float mitadFila);
 int TraficoSalida(LinkedList listaPersonas, float mitadFila);
 
-
-
 int main(int, char**) {
     //cronometro
     auto start = chrono::system_clock::now();
     auto end = chrono::system_clock::now();
     chrono::duration<float,milli> duration= end - start; 
     //cout<<duration.count() y mili es 1000 son 1 sec
-
-
 
     Detector hog ;
     LinkedList listaPersonas;
@@ -74,9 +70,11 @@ int main(int, char**) {
         return -1;
         }
         listaPersonas = hog.detect(img);
+
         //mitad filas
         int imgRow = img.rows+1;
         //linea de referencia
+
         line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
         //
         if(respuesta._Equal("guardia")){
@@ -89,25 +87,6 @@ int main(int, char**) {
     }
 
 }  
-int MenuAdmin(){
-    int respuesta;
-    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<";;;;;;;;  Bienvenido Administrador ;;;;;"<<endl;
-    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<"seleccionar archivo de imagenes a analizar:";
-    cout<<endl<<"1.pathA"<<endl;
-    cout<<"2.pathB"<<endl;
-    cout<<"3.pathC"<<endl;
-    cin>>respuesta; 
-    while (respuesta != 1 && respuesta != 2 && respuesta != 3 ){
-        cout<<"ERROR...Por favor seleccione una opcion correcta:";
-        cout<<"1.pathA"<<endl;
-        cout<<"2.pathB"<<endl;
-        cout<<"3.pathC"<<endl;
-        cin>>respuesta;     
-    }    
-    return respuesta;    
-}
 
 void DibujoPersonas(Mat img, LinkedList listaPersonas){
     Person *persona = &listaPersonas.getFirst()->getPerson();
@@ -121,7 +100,6 @@ void DibujoPersonas(Mat img, LinkedList listaPersonas){
         imshow("Imagen",img);
         waitKey(0);
     }
-    
 
 int TraficoEntrada(LinkedList listaPersonas, float mitadFila){
     int cont = 0;
@@ -149,4 +127,23 @@ int TraficoSalida(LinkedList listaPersonas, float mitadFila){
     return cont;
 }
 
+int MenuAdmin(){
+    int respuesta;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<";;;;;;;;  Bienvenido Administrador ;;;;;"<<endl;
+    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
+    cout<<"seleccionar archivo de imagenes a analizar:";
+    cout<<endl<<"1.pathA"<<endl;
+    cout<<"2.pathB"<<endl;
+    cout<<"3.pathC"<<endl;
+    cin>>respuesta; 
+    while (respuesta != 1 && respuesta != 2 && respuesta != 3 ){
+        cout<<"ERROR...Por favor seleccione una opcion correcta:";
+        cout<<"1.pathA"<<endl;
+        cout<<"2.pathB"<<endl;
+        cout<<"3.pathC"<<endl;
+        cin>>respuesta;     
+    }    
+    return respuesta;    
+}
 

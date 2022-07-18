@@ -11,7 +11,9 @@ class Detector{
     private:
         HOGDescriptor hog;
     public:
-        Detector();
+        Detector(): hog(){
+            hog.setSVMDetector(HOGDescriptor::getDefaultPeopleDetector()); 
+        }
         LinkedList detect(Mat img);
         void AdjustBox(Rect& box);
 

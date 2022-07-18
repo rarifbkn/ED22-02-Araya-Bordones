@@ -25,18 +25,48 @@ int main(int, char**) {
     chrono::duration<float,milli> duration= end - start; 
     //cout<<duration.count() y mili es 1000 son 1 sec
 
+
+
     Detector hog ;
     LinkedList listaPersonas;
+    vector<string> paths;
     int accion = 0;
     int numberPerson = 0;
     int zona = 0;
-
+    int horas = duration.count()*3.6;
     //lectura de imagenes
-    vector<string> paths;
-    paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen01.png");
-    paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen02.png");
-    paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/secuencia de imagenes/imagen03.png");
+    String respuesta = "";
+    cout << "Como desea ingresar(guardia/administrador): ";
+    cin >> respuesta;
+
+    while(!respuesta._Equal("guardia") && !respuesta._Equal("administrador")){
+        cout<<endl;
+        cout << "error, ingrese una respuesta valida(guardia/administrador): ";
+        cin >> respuesta;
+    }
+    cout<<endl;
+    if(respuesta == "administrador"){  //de lo contrario entra al administrador
+        accion = MenuAdmin();
+        if(accion ==1){//path A
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen01.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen02.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen03.png");
+        }else if(accion == 2){//path B
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsB/imagen01.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsB/imagen02.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsB/imagen03.png");   
+        }else{ // path C
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsC/imagen01.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsC/imagen02.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsC/imagen03.png");
+        } 
+    }else{// si es el menu de guardia carga estas imagenes por defecto
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen01.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen02.png");
+            paths.push_back("C:/Users/Usuario/Documents/GitHub/ES22-02-Araya-Bordones/src/pathsA/imagen03.png");    
+    }  
     for(auto& path:paths){
+      
         //LECTURA IMAGEN
         Mat img = imread(path);
         if(!img.data){
@@ -49,79 +79,31 @@ int main(int, char**) {
         //linea de referencia
         line(img,Point(0,imgRow),Point(imgRow,img.cols+1),Scalar(255,255,0));
         //
-        String respuesta = "";
-        cout << "Como desea ingresar(guardia/administrador): ";
-        cin >> respuesta;
-
-        while(!respuesta._Equal("guardia") && !respuesta._Equal("administrador")){
-            cout<<endl;
-            cout << "error, ingrese una respuesta valida(guardia/administrador): ";
-            cin >> respuesta;
-        }
-        cout<<endl;
-        if(respuesta == "guardia"){
-            accion = MenuGuardia();
-        }else { //de lo contrario entra al administrador
-            accion = MenuAdmin();
-        }
-        
         if(respuesta._Equal("guardia")){
-            switch(accion){
-                case 1:
                     DibujoPersonas(img,listaPersonas);
-                    break;
-                case 2:
                     cout<< "La cantidad de personas entrando es de :"<< TraficoEntrada(listaPersonas, imgRow/2)<<endl;
-                    break;
-                case 3:
-                    cout<< "La cantidad de personas entrando es de :"<< TraficoSalida(listaPersonas, imgRow/2)<<endl;
-                    break;
-                case 4:
-                    
-                    break;
-                case 5:
-                    
-                    break;
-            }
+                    cout<< "La cantidad de personas saliendo es de :"<< TraficoSalida(listaPersonas, imgRow/2)<<endl;
+                    cout<< "La velocidad de personas/hora entrando es de: "<<TraficoEntrada(listaPersonas, imgRow/2)/horas<<endl;
+                    cout<< "La velocidad de personas/hora saliendo es de: "<<TraficoSalida(listaPersonas, imgRow/2)/horas<<endl;
         }
     }
 
 }  
-
-int MenuGuardia(){
-    int respuesta;
-    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<";;;;;;;;  BIENVENIDO GUARDIA :D  ;;;;;;;"<<endl;
-    cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<"seleccione la accion a realizar con la secuencia actual"<<endl;
-    cout<<"1. Dibujo de las personas en la imagen"<<endl;
-    cout<<"2. Trafico de entrada"<<endl;
-    cout<<"3. Trafico de salida"<<endl;
-    cout<<"4. Velocidad de entrada personas/hora "<<endl;
-    cout<<"5. Velocidad de salida personas/hora "<<endl;
-    cin>>respuesta;
-    while(respuesta != 1 && respuesta != 2 && respuesta != 3 && respuesta != 4 && respuesta != 5){
-        cout<<"ERROR...Por favor seleccione una opcion correcta:";
-        cout<<endl<<"1. Dibujo de las personas en la imagen"<<endl;
-        cout<<"2. Trafico de entrada"<<endl;
-        cout<<"3. Trafico de salida"<<endl;
-        cout<<"4. Velocidad de entrada personas/hora "<<endl;
-        cout<<"5. Velocidad de salida personas/hora "<<endl;
-        cin>>respuesta;
-    }
-    return respuesta;     
-}
 int MenuAdmin(){
     int respuesta;
     cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
     cout<<";;;;;;;;  Bienvenido Administrador ;;;;;"<<endl;
     cout<<";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"<<endl;
-    cout<<"seleccione la accion a realizar con la secuencia actual:";
-    cout<<endl<<"1. seleccionar archivo de imagenes a analizar"<<endl;
+    cout<<"seleccionar archivo de imagenes a analizar:";
+    cout<<endl<<"1.pathA"<<endl;
+    cout<<"2.pathB"<<endl;
+    cout<<"3.pathC"<<endl;
     cin>>respuesta; 
-    while (respuesta != 1){
+    while (respuesta != 1 && respuesta != 2 && respuesta != 3 ){
         cout<<"ERROR...Por favor seleccione una opcion correcta:";
-        cout<<endl<<"1. seleccionar archivo de imagenes a analizar"<<endl;
+        cout<<"1.pathA"<<endl;
+        cout<<"2.pathB"<<endl;
+        cout<<"3.pathC"<<endl;
         cin>>respuesta;     
     }    
     return respuesta;    
@@ -136,6 +118,8 @@ void DibujoPersonas(Mat img, LinkedList listaPersonas){
         rectangle(img,Point(p.getxInitial(),p.getyInitial()),Point(p.getxFinal(),p.getyFinal()),Scalar(0,0,255),2);
         circle(img,Point(p.getxCentro(),p.getyCentro()),2,Scalar(0,255,0),2);
         }
+        imshow("Imagen",img);
+        waitKey(0);
     }
     
 
